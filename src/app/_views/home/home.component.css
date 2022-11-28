@@ -1,0 +1,114 @@
+div#content {
+  width: 1024px;
+  margin: 0 auto;
+  overflow: visible;
+}
+
+section#hero {
+  height: 75vh;
+}
+
+section#hero img {
+  position: fixed;
+  object-fit: cover;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: -100;
+  filter: brightness(0.35);
+}
+
+section#hero h1 {
+  position: fixed;
+  color: var(--color-white);
+  text-align: center;
+  width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  text-shadow: 0 0 30px #FFFFFF;
+  text-transform: uppercase;
+  transition: all 200ms ease-in-out;
+  cursor: default;
+}
+
+section#hero h1:hover {
+  text-shadow: 0 0 50px #FFFFFF;
+}
+
+section#content::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("src/assets/common/background - nodes.png");
+  background-repeat: repeat;
+  background-size: 15%;
+  background-attachment: fixed;
+  filter: contrast(0.87);
+}
+
+section#content {
+  position: relative;
+}
+
+
+#technologies-wrapper {
+  margin: 0 auto;
+  background: linear-gradient(90deg,
+  var(--color-light-gray-transparent) calc((100vw / 2) - 608px),
+  var(--color-light-gray) calc((100vw / 2) - 608px + 48px),
+  var(--color-light-gray) calc((100vw / 2) - 608px + 48px + 1024px),
+  var(--color-light-gray-transparent) calc((100vw / 2) - 608px + 48px + 1024px + 48px));
+}
+
+article.technology div.technology-wrapper {
+  width: 1024px;
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+  height: 466px;
+}
+
+
+article.technology div.technology-wrapper img {
+  margin-top: 48px;
+  width: 555px;
+  height: 370px;
+  border-radius: 15px;
+  filter: drop-shadow(var(--element-shadow));
+  object-fit: cover;
+}
+
+
+article.technology div.technology-wrapper div {
+  align-self: center;
+}
+
+article.technology div.technology-wrapper div h2 {
+  text-align: center;
+}
+
+article.technology div.technology-wrapper div p {
+  margin-top: 16px;
+  padding: 16px;
+  text-align: center;
+}
+
+article.technology:nth-of-type(even) {
+  background-color: var(--color-dark-gray);
+  filter: drop-shadow(var(--element-shadow));
+}
+
+article.technology:nth-of-type(even) div.technology-wrapper div {
+  order: -1;
+}
+
+article.technology:nth-of-type(even) div.technology-wrapper div h2,
+article.technology:nth-of-type(even) div.technology-wrapper div p {
+  color: var(--color-white);
+}
+
