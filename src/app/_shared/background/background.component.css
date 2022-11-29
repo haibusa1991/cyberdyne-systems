@@ -1,4 +1,4 @@
-#background::before {
+#background {
   content: "";
   position: fixed;
   left: 0;
@@ -11,10 +11,10 @@
   var(--color-light-gray-transparent) calc(50vw - 512px - 96px),
   var(--color-light-gray) calc(50vw - 512px - 32px),
   var(--color-light-gray) calc(50vw + 512px + 32px),
-  var(--color-light-gray-transparent) calc(50vw + 512px + 96px ));
+  var(--color-light-gray-transparent) calc(50vw + 512px + 96px));
 }
 
-#background {
+#background-image {
   position: fixed;
   left: 0;
   top: 0;

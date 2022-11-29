@@ -1,0 +1,49 @@
+div.content article.service div.service-wrapper {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+div.content article.service div.service-wrapper {
+  display: flex;
+  gap: 32px;
+  justify-content: space-between;
+}
+
+div.content article.service div.service-wrapper img {
+  width: 555px;
+  height: 370px;
+  margin-top: 48px;
+  margin-bottom: 48px;
+  object-fit: cover;
+  border-radius: 15px;
+  filter: drop-shadow(var(--element-shadow));
+}
+
+div.content article.service div.service-wrapper div.service-text {
+  display: inline-block;
+  height: 160px;
+  align-self: center;
+  width: 40%;
+  text-align: center;
+}
+
+div.content article.service div.service-wrapper div.service-text p{
+  margin-top: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-dark-gray);
+}
+
+div.content article.service:nth-of-type(even) {
+  background-color: var(--color-dark-gray);
+}
+div.content article.service:nth-of-type(even) div.service-wrapper img {
+  order: 1;
+}
+div.content article.service:nth-of-type(even) div.service-wrapper div.service-text h2{
+  color: var(--color-white);
+}
+
+div.content article.service:nth-of-type(even) div.service-wrapper div.service-text p{
+  color: var(--color-white);
+}

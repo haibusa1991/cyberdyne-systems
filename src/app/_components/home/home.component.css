@@ -93,9 +93,11 @@ article.technology div.technology-wrapper div h2 {
 }
 
 article.technology div.technology-wrapper div p {
+  font-weight: 500;
   margin-top: 16px;
   padding: 16px;
   text-align: center;
+  color: var(--color-dark-gray);
 }
 
 article.technology:nth-of-type(even) {
