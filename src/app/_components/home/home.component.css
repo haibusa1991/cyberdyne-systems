@@ -59,10 +59,10 @@ section#content {
 #technologies-wrapper {
   margin: 0 auto;
   background: linear-gradient(90deg,
-  var(--color-light-gray-transparent) calc((100vw / 2) - 608px),
-  var(--color-light-gray) calc((100vw / 2) - 608px + 48px),
-  var(--color-light-gray) calc((100vw / 2) - 608px + 48px + 1024px),
-  var(--color-light-gray-transparent) calc((100vw / 2) - 608px + 48px + 1024px + 48px));
+  var(--color-light-gray-transparent) calc(50vw - 512px - 96px),
+  var(--color-light-gray) calc(50vw - 512px - 32px),
+  var(--color-light-gray) calc(50vw + 512px + 32px),
+  var(--color-light-gray-transparent) calc(50vw + 512px + 96px ));
 }
 
 article.technology div.technology-wrapper {

@@ -1,7 +1,7 @@
 
 footer {
-  /*position: fixed;*/
-  /*bottom: 0;*/
+  /*position: sticky;*/
+  /*top: calc(100vh - 150px);*/
   width: 100%;
   background-color: var(--color-dark-gray);
   height: 150px;
