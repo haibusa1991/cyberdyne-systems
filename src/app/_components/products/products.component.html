@@ -1,8 +1,5 @@
 <app-background></app-background>
 <section class="content">
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
-  <app-product-card></app-product-card>
+  <app-product-card *ngFor="let product of productsData"
+  [productData]="product"></app-product-card>
 </section>

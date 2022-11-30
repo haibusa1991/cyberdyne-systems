@@ -15,6 +15,9 @@ import { ServicesComponent } from './_components/services/services.component';
 import {RouterModule} from "@angular/router";
 import { TosComponent } from './_components/tos/tos.component';
 import { PpComponent } from './_components/pp/pp.component';
+import { ProductDetailsComponent } from './_components/product-details/product-details.component';
+import {ProductCatalogService} from "./_core/product-catalog.service";
+import { ProductsCatalogComponent } from './_components/products-catalog/products-catalog.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,17 @@ import { PpComponent } from './_components/pp/pp.component';
     CompanyComponent,
     ServicesComponent,
     TosComponent,
-    PpComponent
+    PpComponent,
+    ProductDetailsComponent,
+    ProductsCatalogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [],
+  providers: [
+    ProductCatalogService
+  ],
   exports: [
     HeaderComponent,
     FooterComponent,

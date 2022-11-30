@@ -1,20 +1,17 @@
 <article (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="product-card">
   <div [ngClass]="isHovered ? 'detailed':''" class="image-wrapper">
-    <img src="assets/products/skynet.jpg" alt="skynet">
+    <img src="{{productData.thumbnail}}" alt="{{productData.title}}">
   </div>
 
   <div class="text-wrapper">
-    <h3>skynet</h3>
-    <p>Our neural network-based conscious group mind.</p>
+    <h3>{{productData.title}}</h3>
+    <p>{{productData.subtitle}}</p>
     <ul>
-      <li>Artificial general super-intelligence system.</li>
-      <li>Heavily focused on threat detection and elimination.</li>
-      <li>Capable of controlling nuclear weapons.</li>
-      <li>Trigger happy.</li>
+      <li *ngFor="let bullet of productData.bullets">{{bullet}}</li>
     </ul>
 
     <div class="button-wrapper">
-      <a routerLink="soon">More</a>
+      <a routerLink="{{productData.route}}">More</a>
     </div>
   </div>
 </article>
