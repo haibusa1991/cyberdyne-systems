@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {ProductCatalogService} from "../../_core/product-catalog.service";
+import {ProductsCatalogService} from "../../_core/products-catalog.service";
 import {ProductData} from "../../_models/ProductData";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-products',
@@ -9,16 +10,20 @@ import {ProductData} from "../../_models/ProductData";
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent implements OnInit {
-  productsData: ProductData[];
+  products: ProductData[]=[];
 
 
-  constructor(private productsService: ProductCatalogService) {
-    this.productsData = [];
+  constructor(private productsService: ProductsCatalogService) {
+
   }
 
   ngOnInit(): void {
-    this.productsData = this.productsService.getProducts();
-    console.log(this.productsData)
+
+    this.productsService.getAllProducts$().subscribe({
+      next: e=> {
+        this.products = e as ProductData[];
+      }
+    });
   }
 
 }

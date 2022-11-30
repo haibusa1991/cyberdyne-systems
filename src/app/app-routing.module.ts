@@ -12,13 +12,11 @@ import * as path from "path";
 import {ProductsCatalogComponent} from "./_components/products-catalog/products-catalog.component";
 
 const routes: Routes = [
+  {path: 'products/details/:product', component: ProductDetailsComponent},
+  // {path: 'products/details', component: PageNotFoundComponent},
+  {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
   {path: 'home', component: HomeComponent},
-  {
-    path: 'products', component: ProductsComponent, children: [
-      {path: 'details/:product', component: ProductDetailsComponent},
-      {path: ':catalog', component: ProductsCatalogComponent}
-    ]
-  },
+  {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'company', component: CompanyComponent},
   {path: 'terms-of-service', component: TosComponent},
