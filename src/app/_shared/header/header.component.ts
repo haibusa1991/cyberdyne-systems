@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  isSupportButtonHovered: boolean = false;
+  isSupportMenuHovered: boolean = false;
+  isHidden = true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
+
 
 }

@@ -18,6 +18,7 @@ import { ProductDetailsComponent } from './_components/product-details/product-d
 import {ProductsCatalogService} from "./_core/products-catalog.service";
 import { ProductsCatalogComponent } from './_components/products-catalog/products-catalog.component';
 import {ProductDataService} from "./_core/product-data.service";
+import { VarComponent } from './_components/var/var.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {ProductDataService} from "./_core/product-data.service";
     TosComponent,
     PpComponent,
     ProductDetailsComponent,
-    ProductsCatalogComponent
+    ProductsCatalogComponent,
+    VarComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,11 @@ import {mergeMap} from "rxjs";
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  data!: ProductDetails;
+  data: ProductDetails = {
+    productId: 'string',
+    name: 'string',
+    image: 'string',
+    description: 'string'};
 
   constructor(
     private route: ActivatedRoute,
@@ -19,14 +23,13 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //todo refactor
+
     this.route.paramMap.subscribe(e => {
-      this.dataService.getProductDetails$(e.get('product') as string).subscribe(d => {
-        if (d === undefined) {
-          this.router.navigate(['404'])
-        }
-        this.data = d;
-      })
+       let product = e.get('product') as string;
+       this.data = this.dataService.getProductDetails$(product);
+       if (!this.data) {
+         this.router.navigate(['404']);
+       }
     });
   }
 

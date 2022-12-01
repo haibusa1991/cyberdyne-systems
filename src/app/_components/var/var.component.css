@@ -1,0 +1,60 @@
+div#content {
+  width: 1024px;
+  margin: 0 auto;
+  position: relative;
+}
+
+div#content h2 {
+  text-align: center;
+  margin-top: 32px;
+}
+
+div#content img {
+  margin: 32px auto 0;
+  border-radius: 10px;
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  filter: drop-shadow(var(--element-shadow));
+}
+
+div#content h3 {
+  text-align: center;
+  margin-top: 16px;
+  color: var(--color-dark-gray);
+}
+
+div#content div {
+  display: flex;
+  flex-wrap: wrap;
+  /*width: 400px;*/
+  margin: 8px auto 0;
+  gap: 16px;
+  justify-content: center;
+  color: var(--color-dark-gray);
+}
+
+div#content div p:nth-of-type(odd) {
+  text-align: right;
+  width: 40%;
+}
+
+div#content div p:nth-of-type(even) {
+  text-align: left;
+  width: 50%;
+}
+
+div#content > div.emergency-wrapper {
+  margin: 64px auto;
+  width: 400px;
+}
+
+div#content >div.emergency-wrapper p {
+  font-size: 24px;
+  width: 100%;
+  color: var(--color-dark-gray);
+  text-align: center;
+}
+div#content >div.emergency-wrapper p strong{
+  color: var(--color-red);
+}

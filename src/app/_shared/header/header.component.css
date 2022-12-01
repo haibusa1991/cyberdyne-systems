@@ -80,7 +80,7 @@ header #content-container nav ul li a {
   letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: 5px;
-  transition: all 200ms ease-in-out ;
+  transition: all 200ms ease-in-out;
 }
 
 header #content-container nav ul li a:hover {
@@ -90,5 +90,70 @@ header #content-container nav ul li a:hover {
 
 .active {
   background-color: var(--color-red);
+  color: var(--color-white);
+}
+
+.dummy {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
+
+header section#support {
+  position: fixed;
+  top: 70px;
+  right: calc(50vw - 500px);
+  /*display: block;*/
+  width: 300px;
+  height: 400px;
+  background-color: var(--color-white);
+  filter: drop-shadow(var(--element-shadow));
+  border-radius: 10px;
+}
+
+header section#support div.content {
+  padding: 16px;
+}
+
+header section#support ul li {
+  border-bottom: 2px solid var(--color-dark-gray);
+}
+
+header section#support ul li:last-of-type {
+  border-bottom: unset;
+}
+
+header section#support ul li a {
+  height: 40px;
+  display: block;
+  transition: var(--fast-transition)
+}
+
+header section#support ul li a:hover {
+  background-color: var(--color-dark-gray);
+}
+
+header section#support ul li a svg {
+  height: 16px;
+  width: 30px;
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 8px;
+  fill: var(--color-red);
+}
+
+header section#support ul li a svg.white {
+  fill: var(--color-white);
+}
+
+header section#support ul li a p {
+  display: inline-block;
+  line-height: 40px;
+  color: var(--color-red);
+  font-weight: 500;
+}
+header section#support ul li a p.white {
   color: var(--color-white);
 }

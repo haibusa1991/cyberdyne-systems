@@ -4,30 +4,32 @@
 @import "reset.css";
 
 :root {
-    --color-red: #D50002;
-    --color-dark-gray: #636363;
-    --color-light-gray: #EEEEEEFF;
-    --color-light-gray-transparent: #EEEEEE00;
-    --color-white: #FFFFFF;
+  --color-red: #D50002;
+  --color-dark-gray: #636363;
+  --color-light-gray: #EEEEEEFF;
+  --color-light-gray-transparent: #EEEEEE00;
+  --color-white: #FFFFFF;
 
-    --element-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5)
+  --element-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  --slow-transition: all 200ms ease-in-out;
+  --fast-transition: all 150ms ease-in-out;
 }
 
 h1, h2, h3 {
-    font-family: Coda,sans-serif;
-    color: var(--color-red);
-    font-weight: 400;
+  font-family: Coda, sans-serif;
+  color: var(--color-red);
+  font-weight: 400;
 }
 
 h1 {
-    font-size: 64px;
-    letter-spacing: 0.1em;
+  font-size: 64px;
+  letter-spacing: 0.1em;
 }
 
 h2 {
-    font-size: 36px;
+  font-size: 36px;
 }
 
 h3 {
-    font-size: 24px;
+  font-size: 24px;
 }

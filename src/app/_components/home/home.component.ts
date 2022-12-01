@@ -12,4 +12,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  ngAfterContentInit() {
+    console.log('homeview loaded')
+  }
+
 }
