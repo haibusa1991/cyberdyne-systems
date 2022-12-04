@@ -8,13 +8,10 @@ import {Component, OnInit} from '@angular/core';
 export class HeaderComponent implements OnInit {
   isSupportButtonHovered: boolean = false;
   isSupportMenuHovered: boolean = false;
-  isHidden = true;
 
   constructor() {
   }
 
   ngOnInit(): void {
   }
-
-
 }

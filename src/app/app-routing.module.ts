@@ -10,6 +10,9 @@ import {PpComponent} from "./_components/pp/pp.component";
 import {ProductDetailsComponent} from "./_components/product-details/product-details.component";
 import {ProductsCatalogComponent} from "./_components/products-catalog/products-catalog.component";
 import {VarComponent} from "./_components/var/var.component";
+import {LoginComponent} from "./_components/login/login.component";
+import {RegisterComponent} from "./_components/register/register.component";
+import {RegComponent} from "./auth/reg/reg.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
@@ -18,7 +21,9 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'company', component: CompanyComponent},
-  {path: 'var', component: VarComponent},
+  {path: 'auth', component: RegComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'terms-of-service', component: TosComponent},
   {path: 'privacy-policy', component: PpComponent},
   {path: '', redirectTo: '/home', pathMatch: "full"},

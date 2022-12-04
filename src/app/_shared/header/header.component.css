@@ -93,7 +93,7 @@ header #content-container nav ul li a:hover {
   color: var(--color-white);
 }
 
-.dummy {
+.support-button {
   cursor: pointer;
 }
 
@@ -135,6 +135,10 @@ header section#support ul li a:hover {
   background-color: var(--color-dark-gray);
 }
 
+header section#support ul li a:hover svg{
+  fill: var(--color-white);
+}
+
 header section#support ul li a svg {
   height: 16px;
   width: 30px;
@@ -144,9 +148,6 @@ header section#support ul li a svg {
   fill: var(--color-red);
 }
 
-header section#support ul li a svg.white {
-  fill: var(--color-white);
-}
 
 header section#support ul li a p {
   display: inline-block;
@@ -154,6 +155,7 @@ header section#support ul li a p {
   color: var(--color-red);
   font-weight: 500;
 }
-header section#support ul li a p.white {
+
+header section#support ul li a:hover p{
   color: var(--color-white);
 }

@@ -19,6 +19,9 @@ import {ProductsCatalogService} from "./_core/products-catalog.service";
 import { ProductsCatalogComponent } from './_components/products-catalog/products-catalog.component';
 import {ProductDataService} from "./_core/product-data.service";
 import { VarComponent } from './_components/var/var.component';
+import { LoginComponent } from './_components/login/login.component';
+import { RegisterComponent } from './_components/register/register.component';
+import {RegisterService} from "./auth/register.service";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,9 @@ import { VarComponent } from './_components/var/var.component';
     PpComponent,
     ProductDetailsComponent,
     ProductsCatalogComponent,
-    VarComponent
+    VarComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
