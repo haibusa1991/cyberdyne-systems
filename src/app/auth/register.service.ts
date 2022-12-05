@@ -5,7 +5,9 @@ import {getFirestore} from 'firebase/firestore';
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
 import {getDatabase, ref, onValue, get} from "firebase/database";
 import {collection, doc, setDoc} from "firebase/firestore";
-import {  getDoc } from "firebase/firestore";
+import {getDoc} from "firebase/firestore";
+import {CookieService} from 'ngx-cookie-service'
+import {json} from "express";
 
 @Injectable({
   providedIn: 'root'
@@ -30,9 +32,12 @@ export class RegisterService {
   private currentUser: any;
 
 
-  constructor() {
+  constructor(private cookieService:CookieService) {
     this.app = initializeApp(this.firebaseConfig);
     this.auth = getAuth(this.app);
+    if(this.cookieService.get('cdyne-systems')){
+      this.currentUser = JSON.parse(this.cookieService.get('cdyne-systems'));
+    }
   }
 
   register(): void {
@@ -60,6 +65,7 @@ export class RegisterService {
     obs.subscribe({
       next: n => {
         this.currentUser = n.user;
+        this.cookieService.set('cdyne-systems', JSON.stringify(this.currentUser))
         console.log(this.currentUser);
       },
       error: e => {
@@ -91,40 +97,50 @@ export class RegisterService {
 
   submitDbData(): void {
     let db = getFirestore(this.app);
-    let citiesRef = collection(db, "cities");
+    let citiesRef = collection(db, "users");
 
-    fromPromise(setDoc(doc(citiesRef, "SF"), {
-      name: "San Francisco", state: "CA", country: "USA",
-      capital: false, population: 860000,
-      regions: ["west_coast", "norcal"]
-    })).subscribe();
+    fromPromise(setDoc(doc(citiesRef, this.currentUser.uid), {
+      // email: this.currentUser.email,
+      namenew: 'f'
 
-    fromPromise(setDoc(doc(citiesRef, "LA"), {
-      name: "Los Angeles", state: "CA", country: "USA",
-      capital: false, population: 3900000,
-      regions: ["west_coast", "socal"]
-    })).subscribe();
+    },{merge:true,mergeFields:['namenew']})).subscribe();
 
-    fromPromise(setDoc(doc(citiesRef, "DC"), {
-      name: "Washington, D.C.", state: null, country: "USA",
-      capital: true, population: 680000,
-      regions: ["east_coast"]
-    })).subscribe();
+    // fromPromise(setDoc(doc(citiesRef, "LA"), {
+    //   name: "Los Angeles", state: "CA", country: "USA",
+    //   capital: false, population: 3900000,
+    //   regions: ["west_coast", "socal"]
+    // })).subscribe();
+    //
+    // fromPromise(setDoc(doc(citiesRef, "DC"), {
+    //   name: "Washington, D.C.", state: null, country: "USA",
+    //   capital: true, population: 680000,
+    //   regions: ["east_coast"]
+    // })).subscribe();
 
 
   };
 
   getData() {
     let db = getFirestore(this.app);
-    const docRef = doc(db, "cities", "SF");
+    const docRef = doc(db, "users", this.currentUser.uid);
     const docSnap = fromPromise(getDoc(docRef)).subscribe({
       next: n => {
         console.log("Document data:", n.data());
       },
-      error: e =>{
+      error: e => {
         console.log("No such document!");
       }
     });
+
+    // const docRef = doc(db, "cities", "SF");
+    // const docSnap = fromPromise(getDoc(docRef)).subscribe({
+    //   next: n => {
+    //     console.log("Document data:", n.data());
+    //   },
+    //   error: e => {
+    //     console.log("No such document!");
+    //   }
+    // });
 
     // debugger
     // if (docSnap.exists()) {

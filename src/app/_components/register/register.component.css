@@ -102,13 +102,23 @@ div.invalid {
   background-color: var(--color-dark-gray);
 }
 
-#content form svg {
+#content form svg.field-symbol {
   display: inline-block;
   position: absolute;
   width: 24px;
   height: 24px;
   fill: var(--color-dark-gray);
   left: 4px;
+  transform: translateY(4px);
+}
+
+#content form svg.field-valid {
+  display: inline-block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: var(--color-red);
+  right: -36px;
   transform: translateY(4px);
 }
 

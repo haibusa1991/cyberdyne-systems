@@ -22,6 +22,7 @@ import { VarComponent } from './_components/var/var.component';
 import { LoginComponent } from './_components/login/login.component';
 import { RegisterComponent } from './_components/register/register.component';
 import {RegisterService} from "./auth/register.service";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import {RegisterService} from "./auth/register.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   providers: [
     ProductsCatalogService,
