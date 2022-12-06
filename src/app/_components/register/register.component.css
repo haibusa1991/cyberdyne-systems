@@ -100,6 +100,7 @@ div.invalid {
 
 #content form button.disabled {
   background-color: var(--color-dark-gray);
+  cursor: not-allowed;
 }
 
 #content form svg.field-symbol {

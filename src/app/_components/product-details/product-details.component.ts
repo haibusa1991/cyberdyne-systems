@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from "@angular/router";
-import {ProductDataService} from "../../_core/product-data.service";
+import {ProductDataService} from "../../_core/contentProvider/product-data.service";
 import {ProductDetails} from "../../_models/ProductDetails";
 import {mergeMap} from "rxjs";
 

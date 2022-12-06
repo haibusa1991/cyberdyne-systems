@@ -13,6 +13,7 @@ import {VarComponent} from "./_components/var/var.component";
 import {LoginComponent} from "./_components/login/login.component";
 import {RegisterComponent} from "./_components/register/register.component";
 import {RegComponent} from "./auth/reg/reg.component";
+import {UserPanelComponent} from "./_view-components/user-panel/user-panel.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
@@ -21,9 +22,10 @@ const routes: Routes = [
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'company', component: CompanyComponent},
-  {path: 'auth', component: RegComponent},
+  // {path: 'auth', component: RegComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'user', component: UserPanelComponent},
   {path: 'terms-of-service', component: TosComponent},
   {path: 'privacy-policy', component: PpComponent},
   {path: '', redirectTo: '/home', pathMatch: "full"},

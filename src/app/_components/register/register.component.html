@@ -5,7 +5,7 @@
     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="email">email address (required)</label>
-        <input type="text" name="email" id="email" formControlName="email">
+        <input type="text" name="email" id="email" formControlName="email" (input)="isAlreadyRegistered=false">
         <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
@@ -31,7 +31,8 @@
 
       <div>
         <label for="password">password (required)</label>
-        <input type="password" name="password" id="password" formControlName="password" (input)="revalidatePasswordFields()">
+        <input type="password" name="password" id="password" formControlName="password"
+               (input)="revalidatePasswordFields()">
         <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
           <path
@@ -119,7 +120,13 @@
           routerLink="/terms-of-service" target="_blank"> terms of service.</a></p>
       </div>
 
-      <button type="submit" [disabled]="canSubmitForm">Register</button>
+      <div class="invalid" *ngIf="isAlreadyRegistered">
+        This email already is already registered.
+      </div>
+
+      <button type="submit" [ngClass]="{'disabled':canSubmitForm}"
+              [disabled]="canSubmitForm">Register
+      </button>
     </form>
   </div>
   <h3>Already have Cyberdyne account? Click <a routerLink="/login">here</a> to login.</h3>

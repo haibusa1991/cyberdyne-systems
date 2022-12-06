@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from "@angular/common";
-import {ProductsCatalogService} from "../../_core/products-catalog.service";
+import {ProductsCatalogService} from "../../_core/contentProvider/products-catalog.service";
 import {ProductData} from "../../_models/ProductData";
 import {Observable} from "rxjs";
 

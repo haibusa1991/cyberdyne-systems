@@ -9,6 +9,11 @@ import {
   ValidatorFn,
   Validators
 } from "@angular/forms";
+import {AuthService} from "../../_core/auth/auth.service";
+import {CookieService} from "ngx-cookie-service";
+import {CookiesManagerService} from "../../_core/cookies-manager/cookies-manager.service";
+import {IUserRegistration} from "../../_models/IUserRegistration";
+import {Router, RouterModule} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -54,12 +59,20 @@ export class RegisterComponent implements OnInit {
   })
 
   canSubmitForm: boolean = false;
+  isAlreadyRegistered: boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private authService: AuthService,
+    private cookiesManager: CookiesManagerService,
+    private router: Router
+  ) {
   }
 
 
   ngOnInit(): void {
+    console.log('initing')
+    this.canSubmitForm = this.registerForm.status === 'INVALID'
     this.registerForm.statusChanges.subscribe(e => {
       console.log(e)
       this.canSubmitForm = e === 'INVALID';
@@ -81,10 +94,18 @@ export class RegisterComponent implements OnInit {
       password,
       phone
     }))(this.registerForm.value);
-    //todo 0. Add disable-enable looks of the register button. 1. Create new auth service; 2. register user;
-    //registrationService.register(registrationData);
-    //router.redirect '/home'
 
+    console.log(registrationData)
+    this.authService.registerUser(registrationData as IUserRegistration).subscribe({
+      next: n => {
+        this.cookiesManager.setCredentials(n.user);
+        this.authService.setAdditionalRegistrationData(registrationData as IUserRegistration).subscribe();
+        this.router.navigate(['/user']);
+      },
+      error: e => {
+        this.isAlreadyRegistered = true;
+      }
+    })
   }
 
 }
