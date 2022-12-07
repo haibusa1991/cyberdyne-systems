@@ -25,6 +25,9 @@ import {RegisterService} from "./auth/register.service";
 import {ReactiveFormsModule} from "@angular/forms";
 import {CoreModule} from "./_core/core.module";
 import { UserPanelComponent } from './_view-components/user-panel/user-panel.component';
+import { PasswordResetComponent } from './_view-components/password-reset/password-reset.component';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import {ViewComponentsModule} from "./_view-components/view-components.module";
 
 @NgModule({
   declarations: [
@@ -45,13 +48,15 @@ import { UserPanelComponent } from './_view-components/user-panel/user-panel.com
     VarComponent,
     LoginComponent,
     RegisterComponent,
-    UserPanelComponent
+    UserPanelComponent,
+    PasswordResetComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    CoreModule
+    CoreModule,
+    // ViewComponentsModule
   ],
   providers: [
     ProductsCatalogService,

@@ -14,18 +14,22 @@ import {LoginComponent} from "./_components/login/login.component";
 import {RegisterComponent} from "./_components/register/register.component";
 import {RegComponent} from "./auth/reg/reg.component";
 import {UserPanelComponent} from "./_view-components/user-panel/user-panel.component";
+import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
+import {LogoutComponent} from "./_view-components/logout/logout.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
+  {path: 'user/summary', component: UserPanelComponent},
+  {path: 'user/var', component: VarComponent},
+  {path: 'user/log-out', component: LogoutComponent},
   {path: 'home', component: HomeComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'company', component: CompanyComponent},
-  // {path: 'auth', component: RegComponent},
+  {path: 'password-reset', component: PasswordResetComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'user', component: UserPanelComponent},
   {path: 'terms-of-service', component: TosComponent},
   {path: 'privacy-policy', component: PpComponent},
   {path: '', redirectTo: '/home', pathMatch: "full"},

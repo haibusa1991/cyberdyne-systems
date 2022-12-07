@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
     console.log('initing')
     this.canSubmitForm = this.registerForm.status === 'INVALID'
     this.registerForm.statusChanges.subscribe(e => {
-      console.log(e)
+      // console.log(e)
       this.canSubmitForm = e === 'INVALID';
     })
 
@@ -96,11 +96,11 @@ export class RegisterComponent implements OnInit {
     }))(this.registerForm.value);
 
     console.log(registrationData)
-    this.authService.registerUser(registrationData as IUserRegistration).subscribe({
+    this.authService.registerUser$(registrationData as IUserRegistration).subscribe({
       next: n => {
-        this.cookiesManager.setCredentials(n.user);
+        // this.cookiesManager.setCredentials(n.user);
         this.authService.setAdditionalRegistrationData(registrationData as IUserRegistration).subscribe();
-        this.router.navigate(['/user']);
+        this.router.navigate(['/user/summary']);
       },
       error: e => {
         this.isAlreadyRegistered = true;

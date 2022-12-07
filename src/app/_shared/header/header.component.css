@@ -159,3 +159,13 @@ header section#support ul li a p {
 header section#support ul li a:hover p{
   color: var(--color-white);
 }
+
+header section#support ul li.no-bottom-border{
+  border-bottom: unset;
+}
+
+header section#support div.empty {
+  height: 118px;
+  width: 100%;
+  content: "";
+}
