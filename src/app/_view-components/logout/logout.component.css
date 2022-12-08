@@ -1,0 +1,15 @@
+
+div#content{
+  min-height: calc(100vh - 150px - 150px - 100px - 64px - 64px - 64px);
+}
+
+mat-spinner {
+  margin: 64px auto 64px;
+}
+ h2 {
+   text-align: center;
+   display: block;
+   height: 64px;
+ }
+
+

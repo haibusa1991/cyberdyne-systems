@@ -60,6 +60,7 @@ export class RegisterComponent implements OnInit {
 
   canSubmitForm: boolean = false;
   isAlreadyRegistered: boolean = false;
+  isWaitingForServer: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,10 +72,10 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit(): void {
+    //todo remove log
     console.log('initing')
     this.canSubmitForm = this.registerForm.status === 'INVALID'
     this.registerForm.statusChanges.subscribe(e => {
-      // console.log(e)
       this.canSubmitForm = e === 'INVALID';
     })
 
@@ -87,6 +88,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isWaitingForServer = true;
     let registrationData = (({address, email, name, password, phone}) => ({
       address,
       email,
@@ -95,6 +97,7 @@ export class RegisterComponent implements OnInit {
       phone
     }))(this.registerForm.value);
 
+    //todo remove log
     console.log(registrationData)
     this.authService.registerUser$(registrationData as IUserRegistration).subscribe({
       next: n => {
@@ -104,6 +107,7 @@ export class RegisterComponent implements OnInit {
       },
       error: e => {
         this.isAlreadyRegistered = true;
+        this.isWaitingForServer = false;
       }
     })
   }

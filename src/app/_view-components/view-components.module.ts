@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {PasswordResetComponent} from "./password-reset/password-reset.component";
 import {UserPanelComponent} from "./user-panel/user-panel.component";
-import { LogoutComponent } from './logout/logout.component';
+import {LogoutComponent} from './logout/logout.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {CompanyComponent} from "./company/company.component";
 import {HomeComponent} from "./home/home.component";
@@ -22,6 +22,7 @@ import {FooterComponent} from "./_shared/footer/footer.component";
 import {PageNotFoundComponent} from "./_shared/page-not-found/page-not-found.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../app-routing.module";
+import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overlay.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import {AppRoutingModule} from "../app-routing.module";
     ServicesComponent,
     TosComponent,
     UserPanelComponent,
-    VarComponent
+    VarComponent,
+    SpinnerOverlayComponent
   ],
   imports: [
     CommonModule,
@@ -74,4 +76,5 @@ import {AppRoutingModule} from "../app-routing.module";
   ]
 
 })
-export class ViewComponentsModule { }
+export class ViewComponentsModule {
+}

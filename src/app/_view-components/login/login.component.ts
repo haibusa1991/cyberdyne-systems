@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
 
   canSubmitForm: boolean = false;
   areCredentialsInvalid = false;
+  isWaitingForServer = false;
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -33,17 +34,18 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    // console.log(this.loginForm.value);
-    // this.areCredentialsInvalid = true;
-
+    this.isWaitingForServer=true;
     this.authService.login$(this.loginForm.value as IUserLogin).subscribe({
       next: n => {
+        //todo remove log
         console.log(n.user)
         this.router.navigate(['/user/summary']);
       },
       error: e => {
+        //todo remove log
         console.log(e)
         this.areCredentialsInvalid = true;
+        this.isWaitingForServer=false;
       }
     })
   }

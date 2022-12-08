@@ -16,13 +16,14 @@ import {RegComponent} from "./auth/reg/reg.component";
 import {UserPanelComponent} from "./_view-components/user-panel/user-panel.component";
 import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
 import {LogoutComponent} from "./_view-components/logout/logout.component";
+import {UserPanelGuard} from "./auth/user-panel.guard";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
-  {path: 'user/summary', component: UserPanelComponent},
-  {path: 'user/var', component: VarComponent},
-  {path: 'user/log-out', component: LogoutComponent},
+  {path: 'user/summary', component: UserPanelComponent, canActivate: [UserPanelGuard]},
+  {path: 'user/var', component: VarComponent, canActivate: [UserPanelGuard]},
+  {path: 'user/log-out', component: LogoutComponent, canActivate: [UserPanelGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},

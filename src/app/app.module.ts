@@ -7,6 +7,10 @@ import {ProductsCatalogService} from "./_core/contentProvider/products-catalog.s
 import {ProductDataService} from "./_core/contentProvider/product-data.service";
 import {CoreModule} from "./_core/core.module";
 import {ViewComponentsModule} from "./_view-components/view-components.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -16,7 +20,10 @@ import {ViewComponentsModule} from "./_view-components/view-components.module";
     BrowserModule,
     AppRoutingModule,
     CoreModule,
-    ViewComponentsModule
+    ViewComponentsModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     ProductsCatalogService,
