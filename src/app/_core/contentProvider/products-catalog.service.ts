@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {ProductData} from "../../_models/ProductData";
 import {Observable} from "rxjs";
-import {ProductDetailsComponent} from "../../_components/product-details/product-details.component";
+import {ProductDetailsComponent} from "../../_view-components/product-details/product-details.component";
 import {ProductDetails} from "../../_models/ProductDetails";
 
 @Injectable({
