@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {PasswordResetComponent} from "./password-reset/password-reset.component";
-import {UserPanelComponent} from "./user-panel/user-panel.component";
+import {SupportComponent} from "./support/support.component";
 import {LogoutComponent} from './logout/logout.component';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {CompanyComponent} from "./company/company.component";
@@ -23,6 +23,10 @@ import {PageNotFoundComponent} from "./_shared/page-not-found/page-not-found.com
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../app-routing.module";
 import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overlay.component';
+import { OrderPartsComponent } from './order-parts/order-parts.component';
+import { RequestSupportComponent } from './request-support/request-support.component';
+import { UserSettingsComponent } from './user-settings/user-settings.component';
+import { UserSummaryComponent } from './user-summary/user-summary.component';
 
 @NgModule({
   declarations: [
@@ -43,9 +47,13 @@ import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overl
     RegisterComponent,
     ServicesComponent,
     TosComponent,
-    UserPanelComponent,
+    SupportComponent,
     VarComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    OrderPartsComponent,
+    RequestSupportComponent,
+    UserSettingsComponent,
+    UserSummaryComponent
   ],
   imports: [
     CommonModule,
@@ -71,7 +79,7 @@ import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overl
     RegisterComponent,
     ServicesComponent,
     TosComponent,
-    UserPanelComponent,
+    SupportComponent,
     VarComponent
   ]
 

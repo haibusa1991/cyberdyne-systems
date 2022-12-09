@@ -13,17 +13,30 @@ import {VarComponent} from "./_view-components/var/var.component";
 import {LoginComponent} from "./_view-components/login/login.component";
 import {RegisterComponent} from "./_view-components/register/register.component";
 import {RegComponent} from "./auth/reg/reg.component";
-import {UserPanelComponent} from "./_view-components/user-panel/user-panel.component";
+import {SupportComponent} from "./_view-components/support/support.component";
 import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
 import {LogoutComponent} from "./_view-components/logout/logout.component";
 import {UserPanelGuard} from "./auth/user-panel.guard";
+import {OrderPartsComponent} from "./_view-components/order-parts/order-parts.component";
+import {RequestSupportComponent} from "./_view-components/request-support/request-support.component";
+import {UserSettingsComponent} from "./_view-components/user-settings/user-settings.component";
+import {UserSummaryComponent} from "./_view-components/user-summary/user-summary.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
-  {path: 'user/summary', component: UserPanelComponent, canActivate: [UserPanelGuard]},
-  {path: 'user/var', component: VarComponent, canActivate: [UserPanelGuard]},
-  {path: 'user/log-out', component: LogoutComponent, canActivate: [UserPanelGuard]},
+  {path: 'support', component: SupportComponent, canActivate:[UserPanelGuard], children: [
+      {path: 'summary', component: UserSummaryComponent},
+      {path: 'order-parts', component: OrderPartsComponent},
+      {path: 'request-support', component: RequestSupportComponent},
+      {path: 'var', component: VarComponent},
+      {path: 'settings', component: UserSettingsComponent},
+      {path: 'log-out', component: LogoutComponent},
+    ]},
+
+  // {path: 'user/summary', component: SupportComponent, canActivate: [UserPanelGuard]},
+  // {path: 'user/var', component: VarComponent, canActivate: [UserPanelGuard]},
+  // {path: 'user/log-out', component: LogoutComponent, canActivate: [UserPanelGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},

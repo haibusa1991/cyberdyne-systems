@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user-panel',
-  templateUrl: './user-panel.component.html',
-  styleUrls: ['./user-panel.component.css']
+  templateUrl: './support.component.html',
+  styleUrls: ['./support.component.css']
 })
-export class UserPanelComponent implements OnInit {
+export class SupportComponent implements OnInit {
 
   constructor() { }
 

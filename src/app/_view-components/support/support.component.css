@@ -1,0 +1,104 @@
+#content {
+  width: 1024px;
+  min-height: calc(100vh - 100px - 150px);
+  /*min-height: 100vh;*/
+  /*width: 100%;*/
+  margin: 0 auto;
+  display: flex;
+  gap: 32px;
+}
+
+#menu {
+  min-width: 250px;
+  margin-top: 64px;
+  margin-bottom: 64px;
+  flex-grow: 0;
+}
+
+#menu div.menu-wrapper {
+  height: 100%;
+}
+
+#menu div.menu-wrapper ul {
+  position: sticky;
+  top: 164px;
+}
+
+#menu li {
+  height: 40px;
+  border-bottom: 1px solid var(--color-dark-gray);
+}
+
+#menu li:last-of-type {
+  border-bottom: unset;
+}
+
+#menu li:hover {
+  background-color: var(--color-dark-gray);
+}
+
+
+
+#menu li:hover a p{
+  color: var(--color-white);
+}
+
+#menu li:hover a svg{
+  fill: var(--color-white);
+}
+
+#menu li a.side-menu-active {
+  background-color: var(--color-red);
+}
+
+#menu li a.side-menu-active p{
+  color: var(--color-white);
+}
+
+#menu li a.side-menu-active svg{
+  fill: var(--color-white);
+}
+
+
+
+
+#menu li a {
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+  text-decoration: none;
+}
+
+#menu li a p {
+  color: var(--color-red);
+  font-weight: 500;
+}
+
+#menu li a svg {
+  height: 24px;
+  width: 40px;
+  margin-top: 8px;
+  display: inline-block;
+  line-height: 40px;
+  padding: 0 8px;
+  fill: var(--color-red);
+}
+
+#separator {
+  content: "";
+  width: 2px;
+  top: 32px;
+  bottom: 32px;
+  margin: 32px 0 32px;
+  background-color: var(--color-dark-gray);
+}
+
+#menu-content {
+  flex-grow: 1;
+}
+
+
+
+
+
+

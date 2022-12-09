@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngAfterContentInit() {
+    //todo remove log
     console.log('homeview loaded')
   }
 

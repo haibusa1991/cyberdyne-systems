@@ -47,12 +47,13 @@ export class RegisterService {
     obs.subscribe({
       next: n => {
         let user = n.user;
+        //todo remove log
         console.log(user);
       },
       error: e => {
         let message = e.message;
         let errorCode = e.code;
-
+//todo remove log
         console.log(message);
         console.log(errorCode);
       }
@@ -66,12 +67,13 @@ export class RegisterService {
       next: n => {
         this.currentUser = n.user;
         this.cookieService.set('cdyne-systems', JSON.stringify(this.currentUser))
+        //todo remove log
         console.log(this.currentUser);
       },
       error: e => {
         let message = e.message;
         let errorCode = e.code;
-
+//todo remove log
         console.log(message);
         console.log(errorCode);
       }
@@ -125,9 +127,11 @@ export class RegisterService {
     const docRef = doc(db, "users", this.currentUser.uid);
     const docSnap = fromPromise(getDoc(docRef)).subscribe({
       next: n => {
+        //todo remove log
         console.log("Document data:", n.data());
       },
       error: e => {
+        //todo remove log
         console.log("No such document!");
       }
     });

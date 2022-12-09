@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UserPanelComponent } from './user-panel.component';
+import { RequestSupportComponent } from './request-support.component';
 
-describe('UserPanelComponent', () => {
-  let component: UserPanelComponent;
-  let fixture: ComponentFixture<UserPanelComponent>;
+describe('RequestSupportComponent', () => {
+  let component: RequestSupportComponent;
+  let fixture: ComponentFixture<RequestSupportComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UserPanelComponent ]
+      declarations: [ RequestSupportComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(UserPanelComponent);
+    fixture = TestBed.createComponent(RequestSupportComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

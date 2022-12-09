@@ -27,6 +27,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm.statusChanges.subscribe({
       next: e => {
+        //todo remove log
         console.log(e)
         this.canSubmitForm = e === 'VALID';
       }
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
       next: n => {
         //todo remove log
         console.log(n.user)
-        this.router.navigate(['/user/summary']);
+        this.router.navigate(['/support/summary']);
       },
       error: e => {
         //todo remove log
