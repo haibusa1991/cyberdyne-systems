@@ -16,7 +16,7 @@ export class LogoutComponent implements OnInit {
   ngOnInit(): void {
     this.authService.logout$().subscribe({
       next: n => {
-        setTimeout(()=> this.router.navigate(['']),1500)
+        setTimeout(()=> this.router.navigate(['']),1000)
       },
       error: e => {
         //todo remove log

@@ -9,8 +9,6 @@ import {CoreModule} from "./_core/core.module";
 import {ViewComponentsModule} from "./_view-components/view-components.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -22,8 +20,6 @@ import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
     CoreModule,
     ViewComponentsModule,
     BrowserAnimationsModule,
-    MatSlideToggleModule,
-    MatProgressSpinnerModule
   ],
   providers: [
     ProductsCatalogService,

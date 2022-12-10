@@ -1,6 +1,13 @@
 import {Injectable} from '@angular/core';
 import {initializeApp} from "firebase/app";
-import {createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword} from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  signInWithEmailAndPassword,
+  sendPasswordResetEmail,
+  verifyPasswordResetCode,
+  confirmPasswordReset
+} from "firebase/auth";
 import {IUserRegistration} from "../../_models/IUserRegistration";
 import {Observable} from "rxjs";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
@@ -11,6 +18,7 @@ import {collection, doc, getFirestore, setDoc} from "firebase/firestore";
 import {environment} from "../../../environments/environment";
 import {IUserLogin} from "../../_models/IUserLogin";
 import User = firebase.User;
+import {IUserEmail} from "../../_models/IUserEmail";
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +34,7 @@ export class AuthService {
     this.app = initializeApp(this.dbConfig);
     this.auth = getAuth(this.app);
     //@ts-ignore
+    //todo remove
     window.a = this.auth;
   }
 
@@ -50,20 +59,12 @@ export class AuthService {
   }
 
   authStatus$(): Observable<User | null> {
-    // var onAuthStateChanged$ = Rx.Observable.create(obs => {
-    //   return firebase.auth().onAuthStateChanged(
-    //     user => obs.next(user),
-    //     err => obs.error(err),
-    //     () => obs.complete());
-    // });
-
-    let obs = new Observable((obs => {
-      return this.auth.onAuthStateChanged(e=>obs.next(e));
+    let o = new Observable((o => {
+      return this.auth.onAuthStateChanged(e => o.next(e));
     }));
 
-    return obs as Observable<User | null>;
+    return o as Observable<User | null>;
   }
-
 
   login$(credentials: IUserLogin): Observable<UserCredential> {
     return fromPromise(
@@ -75,7 +76,19 @@ export class AuthService {
     return fromPromise(this.auth.signOut()) as any as Observable<void>
   }
 
-  getCurrentUser() : User | null {
+  getCurrentUser(): User | null {
     return this.auth.currentUser as User;
+  }
+
+  sendPasswordResetEmail$(email: IUserEmail): Observable<void> {
+    return fromPromise(sendPasswordResetEmail(this.auth, email.email))
+  }
+
+  verifyPasswordResetCode$(oobCode: string): Observable<string> {
+    return fromPromise(verifyPasswordResetCode(this.auth, oobCode)) as Observable<string>;
+  }
+
+  changePassword$(oobCode: string, newPassword: string): Observable<void> {
+    return fromPromise(confirmPasswordReset(this.auth, oobCode, newPassword)) as Observable<void>;
   }
 }

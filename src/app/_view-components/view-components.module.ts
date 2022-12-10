@@ -27,6 +27,7 @@ import { OrderPartsComponent } from './order-parts/order-parts.component';
 import { RequestSupportComponent } from './request-support/request-support.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserSummaryComponent } from './user-summary/user-summary.component';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { UserSummaryComponent } from './user-summary/user-summary.component';
     OrderPartsComponent,
     RequestSupportComponent,
     UserSettingsComponent,
-    UserSummaryComponent
+    UserSummaryComponent,
+    AuthComponent
   ],
   imports: [
     CommonModule,

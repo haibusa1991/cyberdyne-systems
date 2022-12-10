@@ -12,15 +12,15 @@ import {ProductsCatalogComponent} from "./_view-components/products-catalog/prod
 import {VarComponent} from "./_view-components/var/var.component";
 import {LoginComponent} from "./_view-components/login/login.component";
 import {RegisterComponent} from "./_view-components/register/register.component";
-import {RegComponent} from "./auth/reg/reg.component";
 import {SupportComponent} from "./_view-components/support/support.component";
 import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
 import {LogoutComponent} from "./_view-components/logout/logout.component";
-import {UserPanelGuard} from "./auth/user-panel.guard";
+import {UserPanelGuard} from "./_core/auth/user-panel.guard";
 import {OrderPartsComponent} from "./_view-components/order-parts/order-parts.component";
 import {RequestSupportComponent} from "./_view-components/request-support/request-support.component";
 import {UserSettingsComponent} from "./_view-components/user-settings/user-settings.component";
 import {UserSummaryComponent} from "./_view-components/user-summary/user-summary.component";
+import {AuthComponent} from "./_view-components/auth/auth.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
@@ -31,13 +31,10 @@ const routes: Routes = [
       {path: 'request-support', component: RequestSupportComponent},
       {path: 'var', component: VarComponent},
       {path: 'settings', component: UserSettingsComponent},
-      {path: 'log-out', component: LogoutComponent},
     ]},
-
-  // {path: 'user/summary', component: SupportComponent, canActivate: [UserPanelGuard]},
-  // {path: 'user/var', component: VarComponent, canActivate: [UserPanelGuard]},
-  // {path: 'user/log-out', component: LogoutComponent, canActivate: [UserPanelGuard]},
+  {path: 'log-out', component: LogoutComponent, canActivate:[UserPanelGuard]},
   {path: 'home', component: HomeComponent},
+  {path: 'auth', component: AuthComponent},
   {path: 'products', component: ProductsComponent},
   {path: 'services', component: ServicesComponent},
   {path: 'company', component: CompanyComponent},

@@ -14,6 +14,7 @@ import {CookieService} from "ngx-cookie-service";
 import {CookiesManagerService} from "../../_core/cookies-manager/cookies-manager.service";
 import {IUserRegistration} from "../../_models/IUserRegistration";
 import {Router, RouterModule} from "@angular/router";
+import {passwordValidator} from "../_shared/FormValidators";
 
 @Component({
   selector: 'app-register',
@@ -22,20 +23,20 @@ import {Router, RouterModule} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
-  passwordValidator(): ValidatorFn {
-    return (c: AbstractControl): ValidationErrors | null => {
-      if (!c.value) {
-        return null;
-      }
-      let hasUpperCase = /[A-Z]+/.test(c.value);
-      let hasLowerCase = /[a-z]+/.test(c.value);
-      let hasNumeric = /[0-9]+/.test(c.value);
-
-      let passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
-
-      return !passwordValid ? {passwordValid: true} : null;
-    }
-  }
+  // passwordValidator(): ValidatorFn {
+  //   return (c: AbstractControl): ValidationErrors | null => {
+  //     if (!c.value) {
+  //       return null;
+  //     }
+  //     let hasUpperCase = /[A-Z]+/.test(c.value);
+  //     let hasLowerCase = /[a-z]+/.test(c.value);
+  //     let hasNumeric = /[0-9]+/.test(c.value);
+  //
+  //     let passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
+  //
+  //     return !passwordValid ? {passwordValid: true} : null;
+  //   }
+  // }
 
   passwordsMatchValidator(): ValidatorFn {
     return (c: AbstractControl): ValidationErrors | null => {
@@ -50,7 +51,8 @@ export class RegisterComponent implements OnInit {
 
   registerForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8), this.passwordValidator()]),
+    // password: new FormControl('', [Validators.required, Validators.minLength(8), this.passwordValidator()]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8), passwordValidator()]),
     repass: new FormControl('', [Validators.required, this.passwordsMatchValidator()]),
     name: new FormControl(''),
     phone: new FormControl(''),
