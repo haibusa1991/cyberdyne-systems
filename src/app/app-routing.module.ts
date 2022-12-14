@@ -18,19 +18,23 @@ import {LogoutComponent} from "./_view-components/logout/logout.component";
 import {UserPanelGuard} from "./_core/auth/user-panel.guard";
 import {RequestSupportComponent} from "./_view-components/request-support/request-support.component";
 import {UserSettingsComponent} from "./_view-components/user-settings/user-settings.component";
-import {UserSummaryComponent} from "./_view-components/user-summary/user-summary.component";
 import {AuthComponent} from "./_view-components/auth/auth.component";
 import {OrderPartsComponent} from "./_support/order-parts/order-parts.component";
+import {DashboardComponent} from "./_support/dashboard/dashboard.component";
+import {OrderDetailsComponent} from "./_support/order-details/order-details.component";
+import {SupportDetailsComponent} from "./_support/support-details/support-details.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
   {path: 'support', component: SupportComponent, canActivate:[UserPanelGuard], children: [
-      {path: 'summary', component: UserSummaryComponent},
+      {path: 'summary', component: DashboardComponent},
       {path: 'order-parts', component: OrderPartsComponent},
       {path: 'request-support', component: RequestSupportComponent},
       {path: 'var', component: VarComponent},
       {path: 'settings', component: UserSettingsComponent},
+      {path: 'order-details/:orderNo', component: OrderDetailsComponent},
+      {path: 'support-details/:supportNo', component: SupportDetailsComponent}
     ]},
   {path: 'log-out', component: LogoutComponent, canActivate:[UserPanelGuard]},
   {path: 'home', component: HomeComponent},

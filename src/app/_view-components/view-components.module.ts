@@ -25,7 +25,6 @@ import {AppRoutingModule} from "../app-routing.module";
 import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overlay.component';
 import { RequestSupportComponent } from './request-support/request-support.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
-import { UserSummaryComponent } from './user-summary/user-summary.component';
 import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
@@ -52,7 +51,6 @@ import { AuthComponent } from './auth/auth.component';
     SpinnerOverlayComponent,
     RequestSupportComponent,
     UserSettingsComponent,
-    UserSummaryComponent,
     AuthComponent
   ],
   imports: [
