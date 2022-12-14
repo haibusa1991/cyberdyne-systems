@@ -20,6 +20,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.authService.authStatus$().subscribe(e => this.isLogged = !!e);
+    this.isLogged = !!this.authService.getCurrentUser();
     this.router.events.subscribe(e => {
       this.isSupportMenuSelected = this.router.url.includes('/support/');
     })

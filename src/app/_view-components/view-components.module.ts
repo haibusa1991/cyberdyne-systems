@@ -23,7 +23,6 @@ import {PageNotFoundComponent} from "./_shared/page-not-found/page-not-found.com
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../app-routing.module";
 import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overlay.component';
-import { OrderPartsComponent } from './order-parts/order-parts.component';
 import { RequestSupportComponent } from './request-support/request-support.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { UserSummaryComponent } from './user-summary/user-summary.component';
@@ -51,7 +50,6 @@ import { AuthComponent } from './auth/auth.component';
     SupportComponent,
     VarComponent,
     SpinnerOverlayComponent,
-    OrderPartsComponent,
     RequestSupportComponent,
     UserSettingsComponent,
     UserSummaryComponent,
@@ -63,27 +61,28 @@ import { AuthComponent } from './auth/auth.component';
     AppRoutingModule,
     MatProgressSpinnerModule
   ],
-  exports: [
-    BackgroundComponent,
-    CompanyComponent,
-    FooterComponent,
-    HeaderComponent,
-    HomeComponent,
-    LoginComponent,
-    LogoutComponent,
-    PageNotFoundComponent,
-    PasswordResetComponent,
-    PpComponent,
-    ProductCardComponent,
-    ProductDetailsComponent,
-    ProductsComponent,
-    ProductsCatalogComponent,
-    RegisterComponent,
-    ServicesComponent,
-    TosComponent,
-    SupportComponent,
-    VarComponent
-  ]
+    exports: [
+        BackgroundComponent,
+        CompanyComponent,
+        FooterComponent,
+        HeaderComponent,
+        HomeComponent,
+        LoginComponent,
+        LogoutComponent,
+        PageNotFoundComponent,
+        PasswordResetComponent,
+        PpComponent,
+        ProductCardComponent,
+        ProductDetailsComponent,
+        ProductsComponent,
+        ProductsCatalogComponent,
+        RegisterComponent,
+        ServicesComponent,
+        TosComponent,
+        SupportComponent,
+        VarComponent,
+        SpinnerOverlayComponent
+    ]
 
 })
 export class ViewComponentsModule {

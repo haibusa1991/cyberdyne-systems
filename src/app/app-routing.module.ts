@@ -16,11 +16,11 @@ import {SupportComponent} from "./_view-components/support/support.component";
 import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
 import {LogoutComponent} from "./_view-components/logout/logout.component";
 import {UserPanelGuard} from "./_core/auth/user-panel.guard";
-import {OrderPartsComponent} from "./_view-components/order-parts/order-parts.component";
 import {RequestSupportComponent} from "./_view-components/request-support/request-support.component";
 import {UserSettingsComponent} from "./_view-components/user-settings/user-settings.component";
 import {UserSummaryComponent} from "./_view-components/user-summary/user-summary.component";
 import {AuthComponent} from "./_view-components/auth/auth.component";
+import {OrderPartsComponent} from "./_support/order-parts/order-parts.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},

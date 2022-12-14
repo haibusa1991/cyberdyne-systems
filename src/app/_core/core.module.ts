@@ -5,6 +5,7 @@ import {AuthService} from "./auth/auth.service";
 import {CookiesManagerService} from "./cookies-manager/cookies-manager.service";
 import {ProductDataService} from "./contentProvider/product-data.service";
 import {ProductsCatalogService} from "./contentProvider/products-catalog.service";
+import {OrderPartsService} from "./order-parts.service";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {ProductsCatalogService} from "./contentProvider/products-catalog.service
     AuthService,
     CookiesManagerService,
     ProductDataService,
-    ProductsCatalogService
+    ProductsCatalogService,
+    OrderPartsService
   ],
   exports: [
 

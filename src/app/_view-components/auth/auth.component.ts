@@ -37,14 +37,14 @@ export class AuthComponent implements OnInit {
           this.isWaitingForResponse = false;
           this.userEmailAddress = {email: n};
           // todo remove log
-          console.log(n) //email
+          // console.log(n) //email
         },
         error: e => {
           this.isWaitingForResponse = false;
           this.canResetPassword = false;
 
           //todo remove log
-          console.log(e)
+          // console.log(e)
         }
       })
     });

@@ -8,6 +8,7 @@ import {ProductDataService} from "./_core/contentProvider/product-data.service";
 import {CoreModule} from "./_core/core.module";
 import {ViewComponentsModule} from "./_view-components/view-components.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {SupportModule} from "./_support/support.module";
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CoreModule,
     ViewComponentsModule,
     BrowserAnimationsModule,
+    SupportModule
   ],
   providers: [
     ProductsCatalogService,

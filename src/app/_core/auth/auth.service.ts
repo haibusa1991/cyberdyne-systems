@@ -6,7 +6,9 @@ import {
   signInWithEmailAndPassword,
   sendPasswordResetEmail,
   verifyPasswordResetCode,
-  confirmPasswordReset
+  confirmPasswordReset,
+  setPersistence,
+  browserLocalPersistence
 } from "firebase/auth";
 import {IUserRegistration} from "../../_models/IUserRegistration";
 import {Observable} from "rxjs";
@@ -35,7 +37,7 @@ export class AuthService {
     this.auth = getAuth(this.app);
     //@ts-ignore
     //todo remove
-    window.a = this.auth;
+    window.$0 = this.auth;
   }
 
   registerUser$(registrationData: IUserRegistration): Observable<UserCredential> {
@@ -67,6 +69,9 @@ export class AuthService {
   }
 
   login$(credentials: IUserLogin): Observable<UserCredential> {
+
+    this.auth.setPersistence(browserLocalPersistence)
+
     return fromPromise(
       signInWithEmailAndPassword(this.auth, credentials.email, credentials.password)
     ) as unknown as Observable<UserCredential>;

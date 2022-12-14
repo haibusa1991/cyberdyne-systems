@@ -10,9 +10,10 @@ export const environment = {
     projectId: "cdyne-systems",
     storageBucket: "cdyne-systems.appspot.com",
     messagingSenderId: "682531435738",
-    appId: "1:682531435738:web:f82128ac1898aa56a421e3"
+    appId: "1:682531435738:web:f82128ac1898aa56a421e3",
   },
   usersTable: 'users',
+  sparePartsTable: 'spares',
   cookieName:'cdyne-systems'
 };
 
