@@ -76,7 +76,10 @@ div.invalid{
 }
 
 #content form button.disabled{
-  background-color: var(--color-dark-gray);
+  background-color: unset;
+  color: var(--color-dark-gray);
+  border: 1px solid var(--color-dark-gray);
+  cursor: not-allowed;
 }
 
 #content form svg {
@@ -107,9 +110,4 @@ transform: translateY(4px);
   text-decoration: none;
   color: var(--color-red);
   font-weight: 500;
-}
-
-#content form button.disabled {
-  background-color: var(--color-dark-gray);
-  cursor: not-allowed;
 }

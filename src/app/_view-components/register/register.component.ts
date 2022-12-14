@@ -105,7 +105,7 @@ export class RegisterComponent implements OnInit {
       next: n => {
         // this.cookiesManager.setCredentials(n.user);
         this.authService.setAdditionalRegistrationData(registrationData as IUserRegistration).subscribe();
-        this.router.navigate(['/user/summary']);
+        this.router.navigate(['/support/summary']);
       },
       error: e => {
         this.isAlreadyRegistered = true;

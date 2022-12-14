@@ -70,7 +70,7 @@
 }
 
 #content form button.order-button {
-  margin: 32px auto 0;
+  margin: 32px auto 32px;
   width: 120px;
   display: block;
 }

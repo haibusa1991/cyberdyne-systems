@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {OrderPartsService} from "../../_core/order-parts.service";
 import {ISparePart} from "../../_models/ISparePart";
 import {mergeMap, Observable, switchMap} from "rxjs";
+import firebase from "firebase/compat";
+import DocumentData = firebase.firestore.DocumentData;
 
 @Component({
   selector: 'app-order-parts',
@@ -10,16 +12,14 @@ import {mergeMap, Observable, switchMap} from "rxjs";
   styleUrls: ['./order-parts.component.css']
 })
 export class OrderPartsComponent implements OnInit {
-  hasFoundPart = false; //todo
-  hasSearched = false;
-  buttonText = 'Search'
   canSearch = false;
   isBusy = false;
-  hasLoadedPhoto = false;
+  hasOrdered = false;
 
-  lastSearchQuery: string = '';
 
-  partData!: ISparePart;
+  orderReference!:DocumentData | null;
+  lastSearchQuery!: string | null;
+  partData!: ISparePart | undefined;
 
   searchForm = new FormGroup({
     partNo: new FormControl('', Validators.required),
@@ -38,32 +38,33 @@ export class OrderPartsComponent implements OnInit {
   onSearch() {
     this.isBusy = true;
     let query = this.searchForm.controls.partNo.value ? this.searchForm.controls.partNo.value?.toLowerCase() : '';
-    this.lastSearchQuery = this.searchForm.controls.partNo.value || '';
+    this.lastSearchQuery = this.searchForm.controls.partNo.value;
 
-
-    this.partsService.getPartInfoByPartNo(query).subscribe({
+    this.partsService.getPartInfoByPartNo$(query).subscribe({
       next: n => {
         if (!n) {
           this.isBusy = false;
-          this.hasFoundPart = false;
-          this.hasSearched = true;
+          this.partData = undefined;
           return;
         }
-
         this.isBusy = false;
-        this.hasFoundPart = true;
         this.partData = n;
-        this.partsService.getPartImageUrl(this.partData.image).subscribe(e => {
-          this.partData.image = e;
-          this.hasLoadedPhoto = true;
-        })
-
       }
-    })
-
+    });
   }
 
   onOrderOrderClick() {
-
+    this.isBusy = true
+    this.hasOrdered = true;
+    this.partsService.putPartRequest$(this.searchForm.controls.partNo.value?.toLowerCase() || '').subscribe({
+      next: n => {
+        this.isBusy = false;
+        this.orderReference = n;
+      },
+      error: e => {
+        this.isBusy = false;
+        this.orderReference= null;
+      }
+    });
   }
 }
