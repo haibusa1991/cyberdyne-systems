@@ -52,13 +52,15 @@ export class OrderPartsService {
 
     let payload = {
       added: Date.now(),
-      isCancelled: true,
+      isCancelled: false,
       partNo: partNo,
       status: {[Date.now()]: 'Order received'}
     } as IOrder;
 
     return fromPromise(addDoc(table, payload));
   }
+
+
 
 
   getAllUserOrders$(): Observable<IOrder> {
@@ -73,10 +75,9 @@ export class OrderPartsService {
             return;
           }
           queryResults.forEach(result => {
-            partData.next(result.data() as IOrder)
+            partData.next({id: result.ref.id, ...result.data()} as IOrder)
           });
         })
     });
   }
-
 }

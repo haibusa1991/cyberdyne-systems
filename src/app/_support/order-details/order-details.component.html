@@ -7,13 +7,13 @@
       <th>Status</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody *ngFor="let order of orderData">
     <tr>
       <td>
-        <p>26-Nov-2022</p>
-        <p>17:35:28</p>
+        <p>{{order.date}}</p>
+        <p>{{order.time}}</p>
       </td>
-      <td>Order received</td>
+      <td>{{order.status}}</td>
     </tbody>
   </table>
 

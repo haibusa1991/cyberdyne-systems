@@ -1,8 +1,9 @@
 <div id="content">
   <div>
-  <h2>My orders</h2>
-  <table>
-    <thead>
+    <h2>My orders</h2>
+    <!--    <ng-container *ngIf="orders.length>0 && parts.length>0">-->
+    <table>
+      <thead>
       <tr>
         <th>Order no.</th>
         <th>Received on</th>
@@ -10,36 +11,31 @@
         <th>Description</th>
         <th>Status</th>
       </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>26112022-0001</td>
-      <td>26-Nov-2022</td>
-      <td>T800-0001</td>
-      <td>T800 head w/o CPU</td>
-      <td>
-        <p>Received</p>
-        <a routerLink="/support/order-details/1">View details</a>
-      </td>
-    </tr>
-    <tr>
-      <td>26112022-0001</td>
-      <td>26-Nov-2022</td>
-      <td>T800-0001</td>
-      <td>T800 head w/o CPU</td>
-      <td>
-        <p>Received</p>
-        <a routerLink="/support/order-details/2">View details</a>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      </thead>
+      <tbody *ngFor="let order of orders">
+      <tr>
+        <td>{{order.id}}</td>
+        <td>{{getOrderDate(order.added)}}</td>
+        <td>{{order.partNo | uppercase}}</td>
+        <td>
+<!--          <ng-container *ngIf="canShow">-->
+            {{getOrderDescription(order.partNo) | async}}
+<!--          </ng-container>-->
+        </td>
+        <td>
+          <p>Received</p>
+          <a routerLink="/support/order-details/{{order.id}}">View details</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <!--    </ng-container>-->
   </div>
 
   <div>
-  <h2>My support requests</h2>
-  <table>
-    <thead>
+    <h2>My support requests</h2>
+    <table>
+      <thead>
       <tr>
         <th>Request no.</th>
         <th>Received on</th>
@@ -47,20 +43,20 @@
         <th>Unit serial no.</th>
         <th>Status</th>
       </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <td>26112022-0001</td>
-      <td>26-Nov-2022</td>
-      <td>T800</td>
-      <td>ABCDE-012345-XXSER</td>
-      <td>
-        <p>Complete</p>
-        <a routerLink="/support/support-details/1">View details</a>
-      </td>
-    </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>26112022-0001</td>
+        <td>26-Nov-2022</td>
+        <td>T800</td>
+        <td>ABCDE-012345-XXSER</td>
+        <td>
+          <p>Complete</p>
+          <a routerLink="/support/support-details/1">View details</a>
+        </td>
+      </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
   </div>
 </div>
