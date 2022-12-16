@@ -4,4 +4,5 @@ export interface IOrder {
   isCancelled: boolean;
   partNo: string;
   status: { [K: number]: string };
+  lastStatus: string;
 }

@@ -1,35 +1,34 @@
 <div id="content">
   <div>
     <h2>My orders</h2>
-    <!--    <ng-container *ngIf="orders.length>0 && parts.length>0">-->
-    <table>
-      <thead>
-      <tr>
-        <th>Order no.</th>
-        <th>Received on</th>
-        <th>Part no.</th>
-        <th>Description</th>
-        <th>Status</th>
-      </tr>
-      </thead>
-      <tbody *ngFor="let order of orders">
-      <tr>
-        <td>{{order.id}}</td>
-        <td>{{getOrderDate(order.added)}}</td>
-        <td>{{order.partNo | uppercase}}</td>
-        <td>
-<!--          <ng-container *ngIf="canShow">-->
-            {{getOrderDescription(order.partNo) | async}}
-<!--          </ng-container>-->
-        </td>
-        <td>
-          <p>Received</p>
-          <a routerLink="/support/order-details/{{order.id}}">View details</a>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-    <!--    </ng-container>-->
+    <ng-container *ngIf="orders.length>0">
+      <table>
+        <thead>
+        <tr>
+          <th>Order no.</th>
+          <th>Received on</th>
+          <th>Part no.</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let order of orders">
+        <tr>
+          <td>{{order.id | slice:10}}</td>
+          <td>{{getOrderDate(order.added)}}</td>
+          <td>{{order.partNo | uppercase}}</td>
+          <td>{{getOrderDescription(order.partNo) | async}}</td>
+          <td>
+            <p>{{order.lastStatus}}</p>
+            <a routerLink="/support/order-details/{{order.id}}">View details</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-container *ngIf="orders.length===0">
+      <p class="no-orders">No current orders. You can put a new order from the "Order parts" menu.</p>
+    </ng-container>
   </div>
 
   <div>

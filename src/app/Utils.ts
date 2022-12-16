@@ -17,12 +17,16 @@ export class Utils {
       11 : 'Dec',
     }
 
-    return `${date.getDate()}-${month[date.getMonth()]}-${date.getFullYear()}`
+    return `${this.padSingleDigitWithZero('' + date.getDate())}-${month[date.getMonth()]}-${date.getFullYear()}`
   }
 
   static milisToTime(milis:number): string {
     let date = new Date(milis);
-    return `${date.getHours()}:${date.getHours()}:${date.getSeconds()}`
+    return `${this.padSingleDigitWithZero('' + date.getHours())}:${this.padSingleDigitWithZero('' + date.getMinutes())}:${this.padSingleDigitWithZero('' + date.getSeconds())}`
+  }
+
+ static padSingleDigitWithZero(digit:string) : string{
+    return digit.padStart(2,'0');
   }
 }
 

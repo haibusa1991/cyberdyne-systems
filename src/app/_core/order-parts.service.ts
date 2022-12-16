@@ -1,18 +1,14 @@
 import {Injectable} from '@angular/core';
-import {collection, doc, getDoc, getFirestore, query, where, getDocs, setDoc, addDoc} from "firebase/firestore";
+import {collection, getFirestore, query, where, getDocs, addDoc, doc, getDoc} from "firebase/firestore";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
 import {environment} from "../../environments/environment";
 import {initializeApp} from "firebase/app";
-import {from, map, mergeMap, Observable, of, pipe, switchMap, tap, throwError} from "rxjs";
-import firebase from "firebase/compat";
-import QuerySnapshot = firebase.firestore.QuerySnapshot;
-import {getStorage, ref, getDownloadURL, getBlob} from "firebase/storage";
+import {Observable} from "rxjs";
 import {ISparePart} from "../_models/ISparePart";
-import DocumentData = firebase.firestore.DocumentData;
-import {IUserRegistration} from "../_models/IUserRegistration";
 import {getAuth} from "firebase/auth";
 import {IOrder} from "../_models/IOrder";
-import firestore = firebase.firestore;
+import firebase from "firebase/compat";
+import DocumentData = firebase.firestore.DocumentData;
 
 @Injectable({
   providedIn: 'root'
@@ -21,15 +17,17 @@ export class OrderPartsService {
   private readonly dbConfig = environment.dbConfig;
   private readonly partsTable = environment.sparePartsTable;
   private readonly app;
+  private readonly firestoreInst;
 
 
   constructor() {
     this.app = initializeApp(this.dbConfig);
+    this.firestoreInst = getFirestore(this.app);
   }
 
   getPartInfoByPartNo$(partNo: string): Observable<ISparePart> {
-    let firestore = getFirestore(this.app);
-    let q = query(collection(firestore, this.partsTable), where('partNo', '==', partNo))
+    // let firestore = getFirestore(this.app);
+    let q = query(collection(this.firestoreInst, this.partsTable), where('partNo', '==', partNo))
     return new Observable(partData => {
       fromPromise(getDocs(q))
         .subscribe(queryResults => {
@@ -44,11 +42,11 @@ export class OrderPartsService {
     });
   }
 
-  putPartRequest$(partNo: string) :Observable<DocumentData> {
-    let db = getFirestore(this.app);
+  putPartRequest$(partNo: string): Observable<DocumentData> {
+    // let db = getFirestore(this.app);
 
     let usersTable = 'orders/' + getAuth(this.app).currentUser?.uid + '/user-orders';
-    let table = collection(db, usersTable)
+    let table = collection(this.firestoreInst, usersTable)
 
     let payload = {
       added: Date.now(),
@@ -60,13 +58,10 @@ export class OrderPartsService {
     return fromPromise(addDoc(table, payload));
   }
 
-
-
-
   getAllUserOrders$(): Observable<IOrder> {
-    let firestore = getFirestore(this.app);
+    // let firestore = getFirestore(this.app);
     let ordersTable = 'orders/' + getAuth(this.app).currentUser?.uid + '/user-orders';
-    let q = query(collection(firestore, ordersTable))
+    let q = query(collection(this.firestoreInst, ordersTable))
     return new Observable(partData => {
       fromPromise(getDocs(q))
         .subscribe(queryResults => {
@@ -79,5 +74,23 @@ export class OrderPartsService {
           });
         })
     });
+  }
+
+  getOrderById$(orderId: string) {
+    let orderLocation = `/orders/${getAuth(this.app).currentUser?.uid}/user-orders`
+
+    // let db = getFirestore(this.app);
+    const docRef = doc(this.firestoreInst, orderLocation, orderId);
+    return fromPromise(getDoc(docRef))
+    // const docSnap = fromPromise(getDoc(docRef)).subscribe({
+    //   next: n => {
+    //     //todo remove log
+    //     console.log("Document data:", n.data());
+    //   },
+    //   error: e => {
+    //     //todo remove log
+    //     console.log("No such document!");
+    //   }
+    // });
   }
 }

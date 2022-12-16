@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {IOrder} from "../../_models/IOrder";
 import {OrderPartsService} from "../../_core/order-parts.service";
-import * as util from "util";
 import {Utils} from "../../Utils";
-import {combineLatest, concat, delay, flatMap, mergeMap, Observable, of, switchMap, tap} from "rxjs";
+import {mergeMap, Observable, of, tap} from "rxjs";
 import {ISparePart} from "../../_models/ISparePart";
 
 @Component({
@@ -15,7 +14,6 @@ export class DashboardComponent implements OnInit {
 
   orders: IOrder[] = [];
   parts: ISparePart[] = [];
-  canShow: boolean = false;
 
   constructor(private orderPartsService: OrderPartsService) {
 
@@ -25,15 +23,20 @@ export class DashboardComponent implements OnInit {
 
     this.orderPartsService.getAllUserOrders$().pipe(
       tap(t => {
-        this.orders.push(t);
-        this.canShow = true;
+        if (!t) return;
+        this.orders.push({...t, lastStatus: this.getLastStatus(t),} as IOrder);
       }),
-      mergeMap(e => this.orderPartsService.getPartInfoByPartNo$(e.partNo)),
+      mergeMap(e => {
+          if (!e) return of(null);
+          return this.orderPartsService.getPartInfoByPartNo$(e.partNo)
+        }
+      )
     ).subscribe(n => {
+      if (!n) return;
       this.parts.push(n);
     })
 
-    //
+    // todo clean
     // setTimeout(() => console.log(this.orders), 500);
     // setTimeout(() => console.log(this.parts), 500);
 
@@ -49,12 +52,21 @@ export class DashboardComponent implements OnInit {
       if (this.parts.length < 1) {
         n.next('Loading...');
       } else {
-        let result = 'error';
-        if (this.parts.filter(e => e.partNo == partNo).length > 0) {
-         result = this.parts.filter(e => e.partNo == partNo)[0].shortName;
+        let part = this.parts.find(e => e.partNo == partNo);
+        if (!part) {
+          n.next('error');
+          return;
         }
-        n.next(result);
+        n.next(part.shortName);
       }
     })
+  }
+
+  getLastStatus(order: IOrder): string {
+    let allStatuses = Object.entries(order.status);
+    allStatuses.sort((e1, e2) => {
+      return +e2[0] - +e1[0];
+    })
+    return allStatuses[0][1];
   }
 }

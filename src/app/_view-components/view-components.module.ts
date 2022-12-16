@@ -23,9 +23,10 @@ import {PageNotFoundComponent} from "./_shared/page-not-found/page-not-found.com
 import {ReactiveFormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../app-routing.module";
 import { SpinnerOverlayComponent } from './_shared/spinner-overlay/spinner-overlay.component';
-import { RequestSupportComponent } from './request-support/request-support.component';
+import { RequestSupportComponent } from '../_support/request-support/request-support.component';
 import { UserSettingsComponent } from './user-settings/user-settings.component';
 import { AuthComponent } from './auth/auth.component';
+import {CoreModule} from "../_core/core.module";
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { AuthComponent } from './auth/auth.component';
     CommonModule,
     ReactiveFormsModule,
     AppRoutingModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CoreModule
   ],
     exports: [
         BackgroundComponent,
