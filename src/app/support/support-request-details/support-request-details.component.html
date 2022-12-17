@@ -1,0 +1,27 @@
+<app-spinner-overlay *ngIf="isBusy"></app-spinner-overlay>
+<div id="content">
+  <h2>Support request details</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Timestamp</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let order of supportRequest">
+    <tr>
+      <td>
+        <p>{{order.date}}</p>
+        <p>{{order.time}}</p>
+      </td>
+      <td>{{order.status}}</td>
+    </tbody>
+  </table>
+
+  <div class="buttons-container">
+    <ng-container *ngIf="logFileReference">
+    <button (click)="onDownload()">Download log</button>
+    </ng-container>
+    <button (click)="onBack()">Back</button>
+  </div>
+</div>

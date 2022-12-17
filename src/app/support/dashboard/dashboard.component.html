@@ -1,0 +1,67 @@
+<div id="content">
+  <div>
+    <h2>My orders</h2>
+    <ng-container *ngIf="orders.length>0">
+      <table>
+        <thead>
+        <tr>
+          <th>Order no.</th>
+          <th>Received on</th>
+          <th>Part no.</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let order of orders">
+        <tr>
+          <td>{{order.id | slice:10}}</td>
+          <td>{{getPutDate(order.added)}}</td>
+          <td>{{order.partNo | uppercase}}</td>
+          <td>{{getOrderDescription(order.partNo) | async}}</td>
+          <td>
+            <p>{{order.lastStatus}}</p>
+            <a routerLink="/support/order-details/{{order.id}}">View details</a>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </ng-container>
+
+    <ng-container *ngIf="orders.length===0">
+      <p class="no-orders">No current orders. You can put a new order from the "Order parts" menu.</p>
+    </ng-container>
+  </div>
+
+  <div>
+    <h2>My support requests</h2>
+    <ng-container *ngIf="requests.length>0">
+    <table>
+      <thead>
+      <tr>
+        <th>Request no.</th>
+        <th>Received on</th>
+        <th>Unit model</th>
+        <th>Unit serial no.</th>
+        <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{request.id | slice:10}}</td>
+        <td>{{getPutDate(request.added)}}</td>
+        <td>{{request.model | uppercase}}</td>
+        <td>{{request.serial | uppercase}}</td>
+        <td>
+          <p>{{request.lastStatus}}</p>
+          <a routerLink="/support/support-details/{{request.id}}">View details</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    </ng-container>
+
+    <ng-container *ngIf="requests.length===0">
+      <p class="no-orders">No current support requests. You can put a new request from the "Request support" menu.</p>
+    </ng-container>
+  </div>
+</div>

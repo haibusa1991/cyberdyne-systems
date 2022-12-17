@@ -1,0 +1,121 @@
+<app-spinner-overlay *ngIf="isBusy"></app-spinner-overlay>
+
+<div id="content">
+  <ng-container *ngIf="!hasRequested">
+    <h2>Request support</h2>
+    <div class="form-wrapper">
+      <!--    <form action="" [formGroup]="passwordResetForm" (submit)="onSubmit()">-->
+      <form action="" [formGroup]="requestForm">
+        <div>
+          <svg *ngIf="requestForm.controls.model.valid" class="field-valid" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+          </svg>
+          <label for="model">Enter model number (e.g. T-800) (required)</label>
+          <input type="text" name="model" id="model" formControlName="model">
+          <ng-container *ngIf="
+          requestForm.controls.model.errors?.['required']
+          && requestForm.controls.model.touched">
+            <div class="invalid">
+              Model number is required.
+            </div>
+          </ng-container>
+        </div>
+
+        <div>
+          <svg *ngIf="requestForm.controls.serial.valid" class="field-valid" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+          </svg>
+          <label for="serial">Enter serial number in format ABCDE-123456-XYZ (required)</label>
+          <input type="text" name="serial" id="serial" formControlName="serial">
+          <ng-container *ngIf="
+          requestForm.controls.serial.touched
+          && requestForm.controls.serial.errors?.['required']">
+            <div class="invalid">
+              Serial number is required.
+            </div>
+          </ng-container>
+          <ng-container *ngIf="
+          requestForm.controls.serial.touched
+          && requestForm.controls.serial.errors?.['serialNumber']">
+            <div class="invalid">
+              Serial number is not in the required format.
+            </div>
+          </ng-container>
+          <ng-container *ngIf="
+          requestForm.controls.serial.touched
+          && requestForm.controls.serial.errors?.['exactLength']
+          && !requestForm.controls.serial.errors?.['serialNumber']">
+            <div class="invalid">
+              Serial number should be exactly 16 symbols in length.
+            </div>
+          </ng-container>
+        </div>
+
+        <div>
+          <svg *ngIf="requestForm.controls.description.valid" class="field-valid" xmlns="http://www.w3.org/2000/svg"
+               viewBox="0 0 512 512">
+            <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+            <path
+              d="M470.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L192 338.7 425.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"/>
+          </svg>
+          <label for="description">Enter short description of the problem (required)</label>
+          <textarea type="text" class="input-description" name="description" id="description"
+                    formControlName="description"></textarea>
+          <ng-container *ngIf="
+          requestForm.controls.description.touched
+          && (requestForm.controls.description.errors?.['minlength']
+              || requestForm.controls.description.errors?.['required'])">
+            <div class="invalid">
+              The description must be at least 10 characters.
+            </div>
+          </ng-container>
+
+          <div class="upload-file-section-wrapper">
+            <label>Please attach the latest CPU and activity log if available</label>
+            <div class="file-wrapper">
+              <p>{{logFilename | filename}}</p>
+              <label class="upload-file" for="log">
+                <div>Choose file</div>
+              </label>
+              <input type="file"
+                     id="log"
+                     formControlName="log"
+                     accept=".log"
+                     (change)="onFileChange($event)">
+            </div>
+          </div>
+          <ng-container *ngIf="isFileTooBig">
+            <div class="invalid">
+              File is too big. Size should not exceed 2 Kb.
+            </div>
+          </ng-container>
+        </div>
+
+        <button class="request-button"
+                [disabled]="!canSubmit || isFileTooBig"
+                [ngClass]="{'disabled': !canSubmit || isFileTooBig}"
+                (click)="onRequest()">
+          Request
+        </button>
+      </form>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="hasRequested && !!documentData">
+    <h2>Request support</h2>
+    <p>Support request received successfully! You can check the status in the <strong>"My orders and requests"</strong> panel.</p>
+  </ng-container>
+
+  <ng-container *ngIf="hasRequested && !isBusy && !documentData">
+    <h2>Error!</h2>
+    <p>Error occurred while receiving your support request. Please try again.</p>
+  </ng-container>
+
+</div>
+

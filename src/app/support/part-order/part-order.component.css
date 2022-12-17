@@ -1,0 +1,126 @@
+#content {
+  margin: 0 auto;
+  width: 100%;
+  /*min-height: calc(100vh - 314px);*/
+}
+
+#content h2 {
+  margin-top: 32px;
+  text-align: center;
+}
+
+#content p {
+  font-size: 20px;
+  margin-top: 32px;
+  text-align: center;
+  color: var(--color-dark-gray);
+}
+
+#content form div {
+  position: relative;
+}
+
+#content div.form-wrapper {
+  /*height: 280px;*/
+  width: 400px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#content form div label {
+  display: block;
+  height: 16px;
+  line-height: 16px;
+  width: 100%;
+  color: var(--color-dark-gray);
+}
+
+#content form div input {
+  padding-left: 32px;
+  border-radius: 5px;
+  border: 1px solid var(--color-dark-gray);
+  /*width: 100%;*/
+  /*width: 300px;*/
+  height: 32px;
+  color: var(--color-red);
+  font-weight: 500;
+}
+
+
+#content form button {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  /*margin: 32px auto 0;*/
+  /*width: 120px;*/
+  height: 40px;
+  line-height: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+  /*display: block;*/
+  border: none;
+}
+
+#content form button.search-button {
+  margin-left: 16px;
+  height: 40px;
+  width: 96px;
+}
+
+#content form button.order-button {
+  margin: 32px auto 32px;
+  width: 120px;
+  display: block;
+}
+
+#content form button.disabled {
+  background-color: var(--color-dark-gray);
+}
+
+#content form button:hover {
+  background-color: var(--color-dark-red);
+  cursor: pointer;
+}
+
+#content form svg {
+  display: inline-block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: var(--color-dark-gray);
+  left: 4px;
+  transform: translateY(9px);
+}
+
+#content form div.image-wrapper {
+  width: 300px;
+  height: 300px;
+  margin: 32px auto;
+}
+
+#content form div.image-wrapper img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  border-radius: 10px;
+  filter: drop-shadow(var(--element-shadow));
+}
+
+#content form button.disabled {
+  /*background-color: var(--color-dark-gray);*/
+  background-color: unset;
+  border: 1px solid var(--color-dark-gray);
+  color: var(--color-dark-gray);
+  cursor: not-allowed;
+}
+
+div.invalid {
+  color: var(--color-white);
+  margin: 8px 0;
+  padding: 4px 0;
+  text-align: center;
+  background-color: var(--color-pink);
+  border-radius: 5px;
+}

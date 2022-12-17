@@ -1,0 +1,12 @@
+<app-background></app-background>
+<div id="content">
+  <ng-container *ngIf="productDetails">
+    <div class="image-wrapper">
+      <img src="{{productDetails.image}}" alt="picture of {{productDetails.name}}">
+    </div>
+    <div class="text">
+      <h2>{{productDetails.name}}</h2>
+      <p>{{productDetails.description}}</p>
+    </div>
+  </ng-container>
+</div>

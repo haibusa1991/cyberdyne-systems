@@ -1,46 +1,46 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {HomeComponent} from "./_view-components/home/home.component";
-import {PageNotFoundComponent} from "./_view-components/_shared/page-not-found/page-not-found.component";
-import {CompanyComponent} from "./_view-components/company/company.component";
-import {ProductsComponent} from "./_view-components/products/products.component";
-import {ServicesComponent} from "./_view-components/services/services.component";
-import {TosComponent} from "./_view-components/tos/tos.component";
-import {PpComponent} from "./_view-components/pp/pp.component";
-import {ProductDetailsComponent} from "./_view-components/product-details/product-details.component";
-import {ProductsCatalogComponent} from "./_view-components/products-catalog/products-catalog.component";
-import {VarComponent} from "./_view-components/var/var.component";
-import {LoginComponent} from "./_view-components/login/login.component";
-import {RegisterComponent} from "./_view-components/register/register.component";
-import {SupportComponent} from "./_view-components/support/support.component";
-import {PasswordResetComponent} from "./_view-components/password-reset/password-reset.component";
-import {LogoutComponent} from "./_view-components/logout/logout.component";
-import {UserPanelGuard} from "./_core/auth/user-panel.guard";
-import {RequestSupportComponent} from "./_support/request-support/request-support.component";
-import {UserSettingsComponent} from "./_view-components/user-settings/user-settings.component";
-import {AuthComponent} from "./_view-components/auth/auth.component";
-import {OrderPartsComponent} from "./_support/order-parts/order-parts.component";
-import {DashboardComponent} from "./_support/dashboard/dashboard.component";
-import {OrderDetailsComponent} from "./_support/order-details/order-details.component";
-import {SupportDetailsComponent} from "./_support/support-details/support-details.component";
+import {HomeComponent} from "./base/home/home.component";
+import {PageNotFoundComponent} from "./base/page-not-found/page-not-found.component";
+import {CompanyComponent} from "./base/company/company.component";
+import {AllProductsComponent} from "./products/all-products/all-products.component";
+import {CompanyServicesComponent} from "./base/company-services/company-services.component";
+import {TosComponent} from "./base/tos/tos.component";
+import {PpComponent} from "./base/pp/pp.component";
+import {ProductDetailsComponent} from "./products/product-details/product-details.component";
+import {ProductsCatalogComponent} from "./products/products-catalog/products-catalog.component";
+import {VarComponent} from "./support/var/var.component";
+import {LoginComponent} from "./base/login/login.component";
+import {RegisterComponent} from "./base/register/register.component";
+import {SupportContainerComponent} from "./support/support-container/support-container.component";
+import {PasswordResetComponent} from "./base/password-reset/password-reset.component";
+import {LogoutComponent} from "./base/logout/logout.component";
+import {UserPanelGuard} from "./core/auth/user-panel.guard";
+import {SupportRequestComponent} from "./support/support-request/support-request.component";
+import {UserSettingsComponent} from "./support/user-settings/user-settings.component";
+import {NewPasswordComponent} from "./base/new-password/new-password.component";
+import {PartOrderComponent} from "./support/part-order/part-order.component";
+import {DashboardComponent} from "./support/dashboard/dashboard.component";
+import {PartOrderDetailsComponent} from "./support/part-order-details/part-order-details.component";
+import {SupportRequestDetailsComponent} from "./support/support-request-details/support-request-details.component";
 
 const routes: Routes = [
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
-  {path: 'support', component: SupportComponent, canActivate:[UserPanelGuard], children: [
+  {path: 'support', component: SupportContainerComponent, canActivate:[UserPanelGuard], children: [
       {path: 'summary', component: DashboardComponent},
-      {path: 'order-parts', component: OrderPartsComponent},
-      {path: 'request-support', component: RequestSupportComponent},
+      {path: 'order-parts', component: PartOrderComponent},
+      {path: 'request-support', component: SupportRequestComponent},
       {path: 'var', component: VarComponent},
       {path: 'settings', component: UserSettingsComponent},
-      {path: 'order-details/:orderNo', component: OrderDetailsComponent},
-      {path: 'support-details/:supportNo', component: SupportDetailsComponent}
+      {path: 'order-details/:orderNo', component: PartOrderDetailsComponent},
+      {path: 'support-details/:supportRequestNo', component: SupportRequestDetailsComponent}
     ]},
   {path: 'log-out', component: LogoutComponent, canActivate:[UserPanelGuard]},
   {path: 'home', component: HomeComponent},
-  {path: 'auth', component: AuthComponent},
-  {path: 'products', component: ProductsComponent},
-  {path: 'services', component: ServicesComponent},
+  {path: 'auth', component: NewPasswordComponent},
+  {path: 'products', component: AllProductsComponent},
+  {path: 'services', component: CompanyServicesComponent},
   {path: 'company', component: CompanyComponent},
   {path: 'password-reset', component: PasswordResetComponent},
   {path: 'login', component: LoginComponent},

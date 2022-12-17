@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {ProductsCatalogService} from "./_core/contentProvider/products-catalog.service";
-import {ProductDataService} from "./_core/contentProvider/product-data.service";
-import {CoreModule} from "./_core/core.module";
-import {ViewComponentsModule} from "./_view-components/view-components.module";
+import {CoreModule} from "./core/core.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SupportModule} from "./_support/support.module";
+import {SupportModule} from "./support/support.module";
+import {ProductsModule} from "./products/products.module";
+import {SharedModule} from "./shared/shared.module";
+import {BaseModule} from "./base/base.module";
 
 
 @NgModule({
@@ -18,14 +17,14 @@ import {SupportModule} from "./_support/support.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CoreModule,
-    ViewComponentsModule,
     BrowserAnimationsModule,
-    SupportModule
+    BaseModule,
+    CoreModule,
+    ProductsModule,
+    SharedModule,
+    SupportModule,
   ],
   providers: [
-    ProductsCatalogService,
-    ProductDataService
   ],
   exports: [
 

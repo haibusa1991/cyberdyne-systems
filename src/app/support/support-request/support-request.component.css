@@ -1,0 +1,159 @@
+#content {
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+}
+
+#content h2 {
+  margin-top: 32px;
+  text-align: center;
+}
+
+#content p {
+  font-size: 20px;
+  margin-top: 32px;
+  text-align: center;
+  color: var(--color-dark-gray);
+}
+
+#content div.form-wrapper {
+  width: 450px;
+  margin-top: 32px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+#content form div label {
+  display: block;
+  margin-top: 32px;
+  margin-bottom: 4px;
+  height: 16px;
+  line-height: 16px;
+  width: 100%;
+  color: var(--color-dark-gray);
+}
+#content form>div {
+  position: relative;
+}
+
+#content form div input,
+#content form div textarea {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid var(--color-dark-gray);
+  height: 32px;
+  color: var(--color-red);
+  font-weight: 500;
+}
+
+#content form div textarea {
+  min-height: 200px;
+  min-width: 100%;
+  max-width: 100%;
+}
+
+
+#content form button {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  height: 40px;
+  line-height: 20px;
+  font-size: 20px;
+  border-radius: 10px;
+  text-align: center;
+  border: none;
+}
+
+#content form button.search-button {
+  margin-left: 16px;
+  height: 40px;
+  width: 96px;
+}
+
+#content form button.request-button {
+  margin: 32px auto 32px;
+  width: 120px;
+  display: block;
+}
+
+#content form button:hover {
+  background-color: var(--color-dark-red);
+  cursor: pointer;
+}
+
+
+#content form button.disabled {
+  background-color: unset;
+  border: 1px solid var(--color-dark-gray);
+  color: var(--color-dark-gray);
+  cursor: not-allowed;
+}
+
+div.invalid {
+  color: var(--color-white);
+  margin: 8px 0;
+  padding: 4px 0;
+  text-align: center;
+  background-color: var(--color-pink);
+  border-radius: 5px;
+}
+
+input.description {
+  height: 300px;
+}
+
+#content form div.file-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  /*max-height: 60px;*/
+}
+
+#content form div.upload-file-section-wrapper>label {
+  padding-left: 16px;
+}
+
+#content form div.file-wrapper p {
+  font-size: 16px;
+}
+
+#content form div label.upload-file {
+  background-color: var(--color-red);
+  color: var(--color-white);
+  font-size: 18px;
+  width: 110px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+#content form div label.upload-file:hover {
+  cursor: pointer;
+  background-color: var(--color-dark-red);
+}
+
+#content form div input[type="file"] {
+  display: none;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.upload-file-section-wrapper {
+  border: 1px solid var(--color-dark-gray);
+  border-radius: 5px;
+}
+
+#content form svg.field-valid {
+  display: inline-block;
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  fill: var(--color-red);
+  right: -32px;
+  transform: translateY(24px);
+}
+
