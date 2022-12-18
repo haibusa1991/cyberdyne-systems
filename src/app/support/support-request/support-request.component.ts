@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {exactLength, serialNumber} from "../../core/formValidators";
-import {FileHandlerService} from "../../core/file-handler.service";
-import {PartsAndSupportService} from "../../core/parts-and-support.service";
+import {FileHandlerService} from "../../core/services/file-handler.service";
+import {PartsAndSupportService} from "../../core/services/parts-and-support.service";
 import {ISupportRequest} from "../../models/ISupportRequest";
 import {switchMap} from "rxjs";
 import firebase from "firebase/compat";
 import DocumentData = firebase.firestore.DocumentData;
+import {exactLength, serialNumber} from "../../Utils";
 
 @Component({
   selector: 'app-request-support',

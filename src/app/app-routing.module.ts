@@ -15,7 +15,7 @@ import {RegisterComponent} from "./base/register/register.component";
 import {SupportContainerComponent} from "./support/support-container/support-container.component";
 import {PasswordResetComponent} from "./base/password-reset/password-reset.component";
 import {LogoutComponent} from "./base/logout/logout.component";
-import {UserPanelGuard} from "./core/auth/user-panel.guard";
+import {UserPanelGuard} from "./core/guards/user-panel.guard";
 import {SupportRequestComponent} from "./support/support-request/support-request.component";
 import {UserSettingsComponent} from "./support/user-settings/user-settings.component";
 import {NewPasswordComponent} from "./base/new-password/new-password.component";
@@ -25,21 +25,23 @@ import {PartOrderDetailsComponent} from "./support/part-order-details/part-order
 import {SupportRequestDetailsComponent} from "./support/support-request-details/support-request-details.component";
 
 const routes: Routes = [
+
+  {path: 'products', component: AllProductsComponent},
   {path: 'products/details/:product', component: ProductDetailsComponent},
   {path: 'products/catalogs/:catalog', component: ProductsCatalogComponent},
-  {path: 'support', component: SupportContainerComponent, canActivate:[UserPanelGuard], children: [
-      {path: 'summary', component: DashboardComponent},
-      {path: 'order-parts', component: PartOrderComponent},
-      {path: 'request-support', component: SupportRequestComponent},
-      {path: 'var', component: VarComponent},
-      {path: 'settings', component: UserSettingsComponent},
-      {path: 'order-details/:orderNo', component: PartOrderDetailsComponent},
-      {path: 'support-details/:supportRequestNo', component: SupportRequestDetailsComponent}
-    ]},
-  {path: 'log-out', component: LogoutComponent, canActivate:[UserPanelGuard]},
+  // {path: 'support', component: SupportContainerComponent, canActivate: [UserPanelGuard], children: [
+  //     {path: 'summary', component: DashboardComponent},
+  //     {path: 'order-parts', component: PartOrderComponent},
+  //     {path: 'request-support', component: SupportRequestComponent},
+  //     {path: 'var', component: VarComponent},
+  //     {path: 'settings', component: UserSettingsComponent},
+  //     {path: 'order-details/:orderNo', component: PartOrderDetailsComponent},
+  //     {path: 'support-details/:supportRequestNo', component: SupportRequestDetailsComponent}
+  //   ]
+  {path: 'support', loadChildren: () => import('./support/support.module').then(m => m.SupportModule)},
+  {path: 'log-out', component: LogoutComponent, canActivate: [UserPanelGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'auth', component: NewPasswordComponent},
-  {path: 'products', component: AllProductsComponent},
   {path: 'services', component: CompanyServicesComponent},
   {path: 'company', component: CompanyComponent},
   {path: 'password-reset', component: PasswordResetComponent},

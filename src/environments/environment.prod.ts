@@ -10,5 +10,7 @@ export const environment = {
   },
   usersTable: 'users',
   sparePartsTable: 'spares',
+  catalogsTable: 'catalogs',
+  productsTable: 'products',
   cookieName:'cdyne-systems'
 };

@@ -7,16 +7,15 @@ import {
   sendPasswordResetEmail,
   verifyPasswordResetCode,
   confirmPasswordReset,
-  setPersistence,
+  updateEmail,
   browserLocalPersistence
 } from "firebase/auth";
 import {IUserRegistration} from "../../models/IUserRegistration";
-import {Observable} from "rxjs";
+import {mergeMap, Observable, of} from "rxjs";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
 import firebase from "firebase/compat";
 import UserCredential = firebase.auth.UserCredential;
-import {CookiesManagerService} from "../cookies-manager/cookies-manager.service";
-import {collection, doc, getFirestore, setDoc} from "firebase/firestore";
+import {collection, doc, getDoc, getFirestore, setDoc} from "firebase/firestore";
 import {environment} from "../../../environments/environment";
 import {IUserLogin} from "../../models/IUserLogin";
 import User = firebase.User;
@@ -31,13 +30,12 @@ export class AuthService {
 
   private readonly app;
   private readonly auth;
+  private readonly firestoreInst;
 
-  constructor(private cookiesManager: CookiesManagerService) {
+  constructor() {
     this.app = initializeApp(this.dbConfig);
     this.auth = getAuth(this.app);
-    //@ts-ignore
-    //todo remove
-    window.$0 = this.auth;
+    this.firestoreInst = getFirestore(this.app);
   }
 
   registerUser$(registrationData: IUserRegistration): Observable<UserCredential> {
@@ -47,16 +45,25 @@ export class AuthService {
   }
 
   setAdditionalRegistrationData(registrationData: IUserRegistration): Observable<void> {
-    let db = getFirestore(this.app);
-    let table = collection(db, this.usersTable)
+    let table = collection(this.firestoreInst, this.usersTable)
 
     let uid = this.auth.currentUser?.uid;
     return fromPromise(setDoc(doc(table, uid), {
-      'Address': registrationData.address,
-      'Email': registrationData.email,
-      'Name': registrationData.name,
-      'Phone': registrationData.phone
+      'address': registrationData.address,
+      'email': registrationData.email,
+      'name': registrationData.name,
+      'phone': registrationData.phone
     }));
+  }
+
+  getAdditionalRegistrationData$() {
+    let userDataLocation = `${this.usersTable}/${getAuth(this.app).currentUser?.uid}`
+
+    const docRef = doc(this.firestoreInst, userDataLocation);
+    return fromPromise(getDoc(docRef)).pipe(
+      mergeMap(document => of(document.data()))
+    ) as Observable<IUserRegistration>
+
   }
 
   authStatus$(): Observable<User | null> {
@@ -94,5 +101,9 @@ export class AuthService {
 
   changePassword$(oobCode: string, newPassword: string): Observable<void> {
     return fromPromise(confirmPasswordReset(this.auth, oobCode, newPassword)) as Observable<void>;
+  }
+
+  setNewEmailAddress$(email: string) {
+    return fromPromise(updateEmail(this.auth.currentUser!, email));
   }
 }

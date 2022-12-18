@@ -1,27 +1,21 @@
 # CyberdyneSystems
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.9.
+This project is created as grading project for Angular course at SoftUni.
 
-## Development server
+The project consists of 2 parts - public and private.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Public part
 
-## Code scaffolding
+User can browse current product catalogues as well as look at current and deprecated product details.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Private part
 
-## Build
+After registration, user can access their control panel which provides several functions.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### User panel functionality
 
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+ - Dashboard: user can view their current and past orders, download previously uploaded files.
+ - Order parts: user can search for spare parts by number and order part, if needed. Parts ordered appear in dashboard.
+ - Request support: send support request by providing some information and upload file, if needed.
+ - Account setting: Change email, password, phone number and address.
+ - Logout of the system.

@@ -1,5 +1,9 @@
 <app-background></app-background>
 <section class="content">
-  <app-product-card *ngFor="let product of products"
-  [productData]="product"></app-product-card>
+  <ng-container *ngIf="!isChildActive">
+    <app-product-card *ngFor="let product of products"
+                      [productData]="product"></app-product-card>
+  </ng-container>
+  <router-outlet>
+  </router-outlet>
 </section>

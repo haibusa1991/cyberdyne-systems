@@ -4,7 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {CoreModule} from "./core/core.module";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {SupportModule} from "./support/support.module";
 import {ProductsModule} from "./products/products.module";
 import {SharedModule} from "./shared/shared.module";
 import {BaseModule} from "./base/base.module";
@@ -22,7 +21,6 @@ import {BaseModule} from "./base/base.module";
     CoreModule,
     ProductsModule,
     SharedModule,
-    SupportModule,
   ],
   providers: [
   ],

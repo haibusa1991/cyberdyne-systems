@@ -2,9 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {IPasswordResetQuery} from "../../models/IPasswordResetQuery";
 import {FormControl, FormGroup} from "@angular/forms";
-import {passwordValidator} from "../../core/formValidators";
-import {AuthService} from "../../core/auth/auth.service";
+import {AuthService} from "../../core/services/auth.service";
 import {IUserEmail} from "../../models/IUserEmail";
+import {passwordValidator} from "../../Utils";
 
 @Component({
   selector: 'app-auth',

@@ -1,1 +1,211 @@
-<p>user-settings works!</p>
+<app-spinner-overlay *ngIf="isBusy"></app-spinner-overlay>
+<app-verify-password-prompt
+  [isPasswordValid]="isValidPassword"
+  (hasCanceled) = "onPasswordCancel($event)"
+  (password) = "onPasswordOk($event)"
+  *ngIf="shouldShowPasswordPrompt"></app-verify-password-prompt>
+<div id="content">
+  <h2>Account settings</h2>
+  <div class="setting-wrapper" [formGroup]="emailField">
+    <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/>
+    </svg>
+    <label for="email">Email address</label>
+    <div class="field-wrapper">
+      <input type="text"
+             name="email"
+             id="email"
+             value="{{userData.email}}"
+             formControlName="email"
+      >
+      <ng-container *ngIf="!activeSection['email']">
+        <button (click)="onChange($event)"
+                id="email-section"
+                [disabled]="!activeSection['email'] && hasActiveSection"
+                [ngClass]="{'disabled' : !activeSection['email'] && hasActiveSection}"
+        >Change
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="activeSection['email']">
+        <button (click)="onEmailChange()"
+                [disabled]="this.emailField.controls['email'].errors"
+                [ngClass]="{'disabled' : this.emailField.controls['email'].errors}"
+        >Save
+        </button>
+
+        <button (click)="onCancel()"
+        >Cancel
+        </button>
+      </ng-container>
+    </div>
+  </div>
+
+  <ng-container>
+    <div class="invalid message" *ngIf="!isAlreadyRegistered">
+      This email is already registered.
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div class="invalid message" *ngIf="emailField.controls['email'].errors?.['required']">
+      Email address cannot be empty.
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div class="invalid message" *ngIf="emailField.controls['email'].errors?.['email']">
+      Email address is not valid.
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div class="valid message" *ngIf="false">
+      Email address changed successfully.
+    </div>
+  </ng-container>
+
+  <div class="setting-wrapper" [formGroup]="passwordField">
+    <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M336 352c97.2 0 176-78.8 176-176S433.2 0 336 0S160 78.8 160 176c0 18.7 2.9 36.8 8.3 53.7L7 391c-4.5 4.5-7 10.6-7 17v80c0 13.3 10.7 24 24 24h80c13.3 0 24-10.7 24-24V448h40c13.3 0 24-10.7 24-24V384h40c6.4 0 12.5-2.5 17-7l33.3-33.3c16.9 5.4 35 8.3 53.7 8.3zm40-176c-22.1 0-40-17.9-40-40s17.9-40 40-40s40 17.9 40 40s-17.9 40-40 40z"/>
+    </svg>
+    <label for="password">Password</label>
+    <div class="field-wrapper">
+      <input type="password"
+             name="password"
+             id="password"
+             value="{{userData.password}}"
+             formControlName="password">
+      <ng-container *ngIf="!activeSection['password']">
+        <button (click)="onChange($event)"
+                id="password-section"
+                [disabled]="!activeSection['password']&& hasActiveSection"
+                [ngClass]="{'disabled' : !activeSection['password'] && hasActiveSection}"
+        >Change
+        </button>
+      </ng-container>
+
+      <ng-container *ngIf="activeSection['password']">
+        <button (click)="onPasswordChange()"
+                [disabled]="this.passwordField.controls['password'].errors"
+                [ngClass]="{'disabled' : this.passwordField.controls['password'].errors}">
+          Save
+        </button>
+
+        <button (click)="onCancel()"
+        >Cancel
+        </button>
+      </ng-container>
+    </div>
+
+    <ng-container>
+      <div class="invalid message" *ngIf="passwordField.controls['password'].errors?.['passwordValid']">
+        Password must contain an uppercase letter, a lowercase letter, and a number.
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <div class="invalid message" *ngIf="passwordField.controls['password'].errors?.['minlength']">
+        Password must be at least 8 symbols.
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <div class="invalid message" *ngIf="passwordField.controls['password'].errors?.['required']">
+        Password cannot be empty.
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <div class="valid message" *ngIf="false">
+        Password changed successfully.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="setting-wrapper">
+    <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M164.9 24.6c-7.7-18.6-28-28.5-47.4-23.2l-88 24C12.1 30.2 0 46 0 64C0 311.4 200.6 512 448 512c18 0 33.8-12.1 38.6-29.5l24-88c5.3-19.4-4.6-39.7-23.2-47.4l-96-40c-16.3-6.8-35.2-2.1-46.3 11.6L304.7 368C234.3 334.7 177.3 277.7 144 207.3L193.3 167c13.7-11.2 18.4-30 11.6-46.3l-40-96z"/>
+    </svg>
+    <label for="phone">Phone number</label>
+    <div class="field-wrapper">
+      <input type="text" name="phone" id="phone" value="{{userData.phone}}" [disabled]="!activeSection['phone']">
+      <ng-container *ngIf="!activeSection['phone']">
+        <button (click)="onChange($event)"
+                id="phone-section"
+                [disabled]="!activeSection['phone']&& hasActiveSection"
+                [ngClass]="{'disabled' : !activeSection['phone']&& hasActiveSection}"
+        >Change
+        </button>
+      </ng-container>
+      <ng-container *ngIf="activeSection['phone']">
+        <button (click)="onPhoneChange()"
+        >Save
+        </button>
+
+        <button (click)="onCancel()"
+        >Cancel
+        </button>
+      </ng-container>
+    </div>
+
+    <ng-container>
+      <div class="invalid message" *ngIf="false">
+        Error changing phone. Please refresh the page and try again.
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <div class="valid message" *ngIf="false">
+        Phone number changed successfully.
+      </div>
+    </ng-container>
+  </div>
+
+  <div class="setting-wrapper">
+    <svg class="field-symbol" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+      <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+      <path
+        d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 256c-35.3 0-64-28.7-64-64s28.7-64 64-64s64 28.7 64 64s-28.7 64-64 64z"/>
+    </svg>
+    <label for="address">Address</label>
+    <div class="field-wrapper">
+      <input type="text" name="address" id="address" value="{{userData.address}}"
+             [disabled]="!activeSection['address']">
+      <ng-container *ngIf="!activeSection['address']">
+        <button (click)="onChange($event)"
+                id="address-section"
+                [disabled]="!activeSection['address']&& hasActiveSection"
+                [ngClass]="{'disabled' : !activeSection['address']&& hasActiveSection}"
+        >Change
+        </button>
+      </ng-container>
+      <ng-container *ngIf="activeSection['address']">
+        <button (click)="onAddressChange()"
+        >Save
+        </button>
+
+        <button (click)="onCancel()"
+        >Cancel
+        </button>
+      </ng-container>
+    </div>
+    <ng-container>
+      <div class="invalid message" *ngIf="false">
+        Error changing address. Please refresh the page and try again.
+      </div>
+    </ng-container>
+
+    <ng-container>
+      <div class="valid message" *ngIf="false">
+        Address changed successfully.
+      </div>
+    </ng-container>
+  </div>
+</div>

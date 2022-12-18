@@ -1,6 +1,7 @@
 div.content {
   width: 1024px;
   margin: 0 auto;
+  min-height: calc(100vh - 282px);
 }
 div.content h2{
   margin-top: 32px;

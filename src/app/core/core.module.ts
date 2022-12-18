@@ -1,11 +1,10 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {CookieService} from "ngx-cookie-service";
-import {AuthService} from "./auth/auth.service";
-import {CookiesManagerService} from "./cookies-manager/cookies-manager.service";
-import {PartsAndSupportService} from "./parts-and-support.service";
-import {FilenamePipe} from './filename.pipe';
-import {ContentProviderService} from "./content-provider.service";
+import {AuthService} from "./services/auth.service";
+import {PartsAndSupportService} from "./services/parts-and-support.service";
+import {FilenamePipe} from './pipes/filename.pipe';
+import {ContentProviderService} from "./services/content-provider.service";
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import {ContentProviderService} from "./content-provider.service";
   providers: [
     CookieService,
     AuthService,
-    CookiesManagerService,
     PartsAndSupportService,
     ContentProviderService
   ],

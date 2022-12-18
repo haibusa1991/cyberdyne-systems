@@ -3,7 +3,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {IOrder} from "../../models/IOrder";
 import {Utils} from "../../Utils";
 import {mergeMap} from "rxjs";
-import {PartsAndSupportService} from "../../core/parts-and-support.service";
+import {PartsAndSupportService} from "../../core/services/parts-and-support.service";
 
 interface IOrderDetails {
   rawTime: number;

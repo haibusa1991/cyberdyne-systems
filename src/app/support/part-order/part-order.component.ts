@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {PartsAndSupportService} from "../../core/parts-and-support.service";
+import {PartsAndSupportService} from "../../core/services/parts-and-support.service";
 import {ISparePart} from "../../models/ISparePart";
 import {mergeMap, Observable, switchMap} from "rxjs";
 import firebase from "firebase/compat";

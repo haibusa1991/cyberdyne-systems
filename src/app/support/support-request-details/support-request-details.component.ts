@@ -1,11 +1,11 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {PartsAndSupportService} from "../../core/parts-and-support.service";
+import {PartsAndSupportService} from "../../core/services/parts-and-support.service";
 import {mergeMap, tap} from "rxjs";
 import {IOrder} from "../../models/IOrder";
 import {Utils} from "../../Utils";
 import {ISupportRequest} from "../../models/ISupportRequest";
-import {FileHandlerService} from "../../core/file-handler.service";
+import {FileHandlerService} from "../../core/services/file-handler.service";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import * as http from "http";
 import {FileSaverService} from "ngx-filesaver";

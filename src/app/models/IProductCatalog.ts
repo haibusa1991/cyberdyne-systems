@@ -4,4 +4,5 @@ export interface IProductCatalog {
   subtitle: string;
   bullets: string[];
   route: string;
+  pageOrder:number;
 }

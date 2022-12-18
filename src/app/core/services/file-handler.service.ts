@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {initializeApp} from "firebase/app";
 import {getFirestore} from "firebase/firestore";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {getStorage, ref, uploadBytes, UploadResult, getDownloadURL, getBlob} from "firebase/storage";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
 import {Observable} from "rxjs";

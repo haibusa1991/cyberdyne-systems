@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {IOrder} from "../../models/IOrder";
-import {PartsAndSupportService} from "../../core/parts-and-support.service";
+import {PartsAndSupportService} from "../../core/services/parts-and-support.service";
 import {Utils} from "../../Utils";
 import {mergeMap, Observable, of, tap} from "rxjs";
 import {ISparePart} from "../../models/ISparePart";

@@ -8,8 +8,7 @@ import {IProductCatalog} from "../../models/IProductCatalog";
 })
 export class ProductCardComponent implements OnInit {
   isHovered: boolean = false;
-  //@ts-ignore
-  @Input() productData:IProductCatalog;
+  @Input() productData!:IProductCatalog;
   constructor() {
   }
 

@@ -6,6 +6,7 @@ import {HeaderComponent} from "./header/header.component";
 import {SpinnerOverlayComponent} from "./spinner-overlay/spinner-overlay.component";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import {RouterModule} from "@angular/router";
+import { VerifyPasswordPromptComponent } from './verify-password-prompt/verify-password-prompt.component';
 
 
 
@@ -14,7 +15,8 @@ import {RouterModule} from "@angular/router";
     BackgroundComponent,
     FooterComponent,
     HeaderComponent,
-    SpinnerOverlayComponent
+    SpinnerOverlayComponent,
+    VerifyPasswordPromptComponent
   ],
   imports: [
     CommonModule,
@@ -26,7 +28,8 @@ import {RouterModule} from "@angular/router";
     FooterComponent,
     HeaderComponent,
     SpinnerOverlayComponent,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    VerifyPasswordPromptComponent
   ]
 
 

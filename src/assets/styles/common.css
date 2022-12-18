@@ -11,6 +11,7 @@
   --color-light-gray: #EEEEEEFF;
   --color-light-gray-transparent: #EEEEEE00;
   --color-white: #FFFFFF;
+  --color-green: #357714;
 
   --element-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
   --slow-transition: all 200ms ease-in-out;

@@ -5,16 +5,13 @@ import {
   FormControl,
   FormGroup,
   ValidationErrors,
-  Validator,
   ValidatorFn,
   Validators
 } from "@angular/forms";
-import {AuthService} from "../../core/auth/auth.service";
-import {CookieService} from "ngx-cookie-service";
-import {CookiesManagerService} from "../../core/cookies-manager/cookies-manager.service";
+import {AuthService} from "../../core/services/auth.service";
 import {IUserRegistration} from "../../models/IUserRegistration";
 import {Router, RouterModule} from "@angular/router";
-import {passwordValidator} from "../../core/formValidators";
+import {passwordValidator} from "../../Utils";
 
 @Component({
   selector: 'app-register',
@@ -22,21 +19,6 @@ import {passwordValidator} from "../../core/formValidators";
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
-  // passwordValidator(): ValidatorFn {
-  //   return (c: AbstractControl): ValidationErrors | null => {
-  //     if (!c.value) {
-  //       return null;
-  //     }
-  //     let hasUpperCase = /[A-Z]+/.test(c.value);
-  //     let hasLowerCase = /[a-z]+/.test(c.value);
-  //     let hasNumeric = /[0-9]+/.test(c.value);
-  //
-  //     let passwordValid = hasUpperCase && hasLowerCase && hasNumeric;
-  //
-  //     return !passwordValid ? {passwordValid: true} : null;
-  //   }
-  // }
 
   passwordsMatchValidator(): ValidatorFn {
     return (c: AbstractControl): ValidationErrors | null => {
@@ -67,15 +49,12 @@ export class RegisterComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private authService: AuthService,
-    private cookiesManager: CookiesManagerService,
     private router: Router
   ) {
   }
 
 
   ngOnInit(): void {
-    //todo remove log
-    console.log('initing')
     this.canSubmitForm = this.registerForm.status === 'INVALID'
     this.registerForm.statusChanges.subscribe(e => {
       this.canSubmitForm = e === 'INVALID';

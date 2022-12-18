@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
 import {collection, getFirestore, query, where, getDocs, addDoc, doc, getDoc} from "firebase/firestore";
 import {fromPromise} from "rxjs/internal/observable/innerFrom";
-import {environment} from "../../environments/environment";
+import {environment} from "../../../environments/environment";
 import {initializeApp} from "firebase/app";
 import {Observable} from "rxjs";
-import {ISparePart} from "../models/ISparePart";
+import {ISparePart} from "../../models/ISparePart";
 import {getAuth} from "firebase/auth";
-import {IOrder} from "../models/IOrder";
+import {IOrder} from "../../models/IOrder";
 import firebase from "firebase/compat";
 import DocumentData = firebase.firestore.DocumentData;
-import {ISupportRequest} from "../models/ISupportRequest";
+import {ISupportRequest} from "../../models/ISupportRequest";
 import DocumentReference = firebase.firestore.DocumentReference;
 
 @Injectable({

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router, RouterModule} from "@angular/router";
-import {ContentProviderService} from "../../core/content-provider.service";
+import {ContentProviderService} from "../../core/services/content-provider.service";
 import {IProductDetails} from "../../models/IProductDetails";
 import {mergeMap} from "rxjs";
 

@@ -3,4 +3,5 @@ export interface ICatalogCard {
   name: string;
   route: string;
   isDeprecated: boolean;
+  pageOrder:number;
 }
